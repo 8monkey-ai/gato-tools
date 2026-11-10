@@ -1,0 +1,13 @@
+{
+  "name": "gato-tools",
+  "type": "module",
+  "private": true,
+  "packageManager": "bun@1.4.4-canary.1",
+  "scripts": {
+    "check": "bun fmt --check && bun lint --no-error-on-unmatched-pattern && bun test --pass-with-no-tests"
+  },
+  "devDependencies": {
+    "bun-types": "^1.4.4-canary.20261103T140956",
+    "typescript": "^7"
+  }
+}
