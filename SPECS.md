@@ -8,11 +8,11 @@ This specification is the source of truth for the required product behavior and 
 
 ## 1. Service and markets
 
-The service is a separate TypeScript service that runs on Bun. It exposes the tools through MCP and reads file-based catalogue data. Integration details follow the [MCP documentation](https://modelcontextprotocol.io/docs/getting-started/intro). A failure in one tool does not prevent unrelated tools from operating.
+The service is a separate TypeScript service that runs on Bun. It exposes the tools through MCP and reads file-based source data from object storage. Integration details follow the [MCP documentation](https://modelcontextprotocol.io/docs/getting-started/intro). A failure in one tool does not prevent unrelated tools from operating.
 
 The tools need no conversation history. They do not generate replies, send customer messages, reserve stock, or process purchases or payments. An external container and storage service owns hosting, credentials, releases, backups, and restoration.
 
-Each deployment selects one market, the source locations and access, and the timezone:
+Each deployment selects one market, the source locations and access, the stock feed mappings, and the timezone:
 
 | Market      | Code | Currency |
 | ----------- | ---- | -------- |
@@ -21,11 +21,23 @@ Each deployment selects one market, the source locations and access, and the tim
 
 Prices, values, and fixed amounts use the currency of the configured market. Dates use UTC unless the deployment configures another timezone. The market selection does not change the timezone.
 
+### Source data
+
+Operations publishes the source data for each tool through the configured object-storage source: stock, the trade-in reference, campaigns, and the store reference. Each source follows these rules:
+
+- The service loads the source at startup, and again after a restart. A failed initial load is an error. It never appears as an empty result.
+- The service keeps a loaded version for five minutes. After that, queries can use the previous version while a refresh runs.
+- A failed refresh logs the problem and keeps the last loaded version, with no maximum stale age. A later refresh can replace it.
+- Queries use only a complete published version. An interrupted update never activates a partial version.
+- An empty source is valid data. Missing or unusable data is an operational failure, distinct from a genuine no-match result.
+- The serving revision, its age, and failures are visible.
+
 ### Acceptance cases
 
 - When the stock source is unavailable, promotions and store discovery still answer.
 - A PH deployment exposes device availability, promotions, and store discovery only.
 - A PH deployment with no timezone setting uses UTC.
+- For each source, an initial load failure reports a failure, a failed refresh keeps the previous version with no stale-age cutoff, and a restart loads the source again.
 
 ## 2. Device availability
 
@@ -72,7 +84,7 @@ Operations publishes stock through the configured object-storage feed. Feed prep
 
 Stock classification compares the source quantity as text. A quantity that sorts after "3" in text order is Stock Present. Otherwise, exactly "0" is Out of Stock and any other value is Low Stock. These are text comparisons, not numeric thresholds. For example, 4 and 30 are Stock Present, while 10, 100, and a blank quantity are Low Stock. A supplied branch entry that is not exactly "0" includes that branch. This includes a blank entry.
 
-Queries use a complete published version. The service keeps loaded stock for five minutes. After that, queries can use the previous version while a refresh runs. A failed refresh logs the problem and keeps that version with no maximum stale age, and a later refresh can still replace it. A failed initial load is an error. A successfully loaded empty catalogue is valid. The service loads the source again after a restart. The serving revision, its age, and failures are visible. An interrupted preparation never publishes a partial catalogue.
+Stock follows the source data rules in section 1. An empty catalogue is valid.
 
 ### Acceptance cases
 
@@ -114,9 +126,7 @@ A multiword color takes precedence over material. Natural Titanium is a color an
 
 ### Reference data and failures
 
-Operations supplies a reference file for the market with the deployment. The service loads it at startup. Trade-in feed preparation can run at startup and about every five minutes, and it never overlaps itself. Disabling publication prevents changes to shared sources. A newly prepared feed does not become the serving reference. The replacement reference becomes active only when it is published with the deployment. Preparation keeps model numbers, specifications, and values.
-
-Queries use only a complete published reference. A failure never publishes a partial version. An empty reference is valid. Missing or unusable data is an operational failure, distinct from a genuine no-match result. The serving revision and failures are visible.
+Operations publishes the trade-in reference for the market through the configured object-storage source. The reference follows the source data rules in section 1. Trade-in feed preparation can run at startup and about every five minutes, and it never overlaps itself. Disabling publication prevents changes to shared sources. Preparation writes a prepared feed that is separate from the serving reference. A prepared feed becomes the serving reference only when operations publish it as the reference. Preparation keeps model numbers, specifications, and values.
 
 ### Acceptance cases
 
@@ -128,7 +138,7 @@ Queries use only a complete published reference. A failure never publishes a par
 - "Black iPhone 12", "used iPhone 12 with a cracked screen", and "iPhone 12" give the same value for the same variant.
 - An absent price shows 0. A supplied blank price stays blank. Values show in RM.
 - These outcomes stay distinct: unrecognized model, unsupported category, no match, empty reference, and source failure.
-- A newly prepared feed does not change the serving reference until the deployment publishes it.
+- A newly prepared feed does not change the serving reference until operations publish it as the reference.
 
 ## 4. Promotions
 
@@ -150,7 +160,7 @@ Without a model, the result includes model-restricted campaigns and shows their 
 
 Operations publishes campaigns through the configured object-storage source. A campaign contains the offer, voucher, fixed or percentage discount, minimum spend, optional dates, eligible models, priority, and combination rules.
 
-The service keeps loaded campaigns for five minutes. After that, queries can use the previous version while a refresh runs. A failed refresh logs the problem and keeps the last loaded version with no maximum stale age, and a later refresh can replace it. A failed initial load is an error. The service loads the source again after a restart. A valid empty campaign file or list means no offers. The tool never presents missing or invalid campaigns as no promotions or as a free offer. The revision, its age, and failures are visible. The tool accepts only complete published versions.
+Campaigns follow the source data rules in section 1. A valid empty campaign file or list means no offers. The tool never presents missing or invalid campaigns as no promotions or as a free offer.
 
 ### Acceptance cases
 
@@ -183,9 +193,9 @@ With a state only, the result lists all stores whose state matches exactly, igno
 
 ### Store data and failures
 
-Operations supplies the store reference for the market with the deployment. The service loads it at startup. Addresses, contact details, map links, and opening hours stay as supplied. A replacement reference becomes active when it is published through deployment. An empty market reference never causes a fallback to another market.
+Operations publishes the store reference for the market through the configured object-storage source. The reference follows the source data rules in section 1. Addresses, contact details, map links, and opening hours stay as supplied. An empty market reference never causes a fallback to another market.
 
-A successful location lookup with no result differs from a failure of the external location service. Waits for the location service are bounded. The service logs persistent failures, and unrelated tools stay usable. Missing or unusable store data is an operational failure. The serving revision and problems are visible. An interrupted update never activates a partial reference.
+A successful location lookup with no result differs from a failure of the external location service. Waits for the location service are bounded. The service logs persistent failures, and unrelated tools stay usable.
 
 ### Acceptance cases
 
