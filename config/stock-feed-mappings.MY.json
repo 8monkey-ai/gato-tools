@@ -1,0 +1,209 @@
+{
+  "products": {
+    "U_IPHONE": {
+      "category": "iPhone"
+    },
+    "U_WATCH": {
+      "category": "Apple Watch"
+    },
+    "U_IPAD": {
+      "category": "iPad",
+      "specs": {
+        "connectivity": "WiFi"
+      }
+    },
+    "U_IPAD_WC": {
+      "category": "iPad",
+      "specs": {
+        "connectivity": "WiFi+Cellular"
+      }
+    },
+    "U_MAC": {
+      "category": "Mac"
+    },
+    "U_PIXEL": {
+      "category": "Pixel"
+    },
+    "U_SAMSUNG": {
+      "category": "Samsung"
+    },
+    "U_HONOR": {
+      "category": "HONOR"
+    },
+    "U_OPPO": {
+      "category": "OPPO"
+    },
+    "U_PLAYSTATION": {
+      "category": "PlayStation"
+    },
+    "U_SWITCH": {
+      "category": "Switch"
+    },
+    "U_VIVO": {
+      "category": "Vivo"
+    },
+    "N_IPHONE": {
+      "category": "iPhone"
+    },
+    "N_WATCH": {
+      "category": "Apple Watch"
+    },
+    "N_IPAD": {
+      "category": "iPad",
+      "specs": {
+        "connectivity": "WiFi"
+      }
+    },
+    "N_IPAD_WC": {
+      "category": "iPad",
+      "specs": {
+        "connectivity": "WiFi+Cellular"
+      }
+    },
+    "N_MAC": {
+      "category": "Mac"
+    },
+    "N_PIXEL": {
+      "category": "Pixel"
+    },
+    "N_SAMSUNG": {
+      "category": "Samsung"
+    },
+    "N_HONOR": {
+      "category": "HONOR"
+    },
+    "N_OPPO": {
+      "category": "OPPO"
+    },
+    "N_PLAYSTATION": {
+      "category": "PlayStation"
+    },
+    "N_SWITCH": {
+      "category": "Switch"
+    },
+    "N_VIVO": {
+      "category": "Vivo"
+    }
+  },
+  "branches": [
+    {
+      "column": "LowYatPlaza",
+      "name": "[Klang Valley] Low Yat Plaza"
+    },
+    {
+      "column": "LowYatPlaza2",
+      "name": "[Klang Valley] Low Yat Plaza 2"
+    },
+    {
+      "column": "TheMinesShoppingMall",
+      "name": "[Klang Valley] The Mines Shopping Mall"
+    },
+    {
+      "column": "WangsaWalkMall",
+      "name": "[Klang Valley] Wangsa Walk Mall"
+    },
+    {
+      "column": "ParadigmMallPetalingJaya",
+      "name": "[Klang Valley] Paradigm Mall Petaling Jaya"
+    },
+    {
+      "column": "AEONBukitTinggi",
+      "name": "[Klang Valley] AEON Bukit Tinggi"
+    },
+    {
+      "column": "[JOHOR]GIANTPLENTUNG",
+      "name": "[Johor] GIANT PLENTUNG"
+    },
+    {
+      "column": "[JOHOR]AEONKulaijaya",
+      "name": "[Johor] AEON Kulaijaya"
+    },
+    {
+      "column": "[KEDAH]CityPlaza",
+      "name": "[Kedah] City Plaza"
+    },
+    {
+      "column": "[KEDAH]AmanCentral",
+      "name": "[Kedah] Aman Central"
+    },
+    {
+      "column": "[KEDAH]AlorStar",
+      "name": "[Kedah] Alor Star"
+    },
+    {
+      "column": "[PERAK]MydinParitBuntar",
+      "name": "[Perak] Mydin Parit Buntar"
+    },
+    {
+      "column": "[PENANG]PranginMall",
+      "name": "[Penang] Prangin Mall"
+    },
+    {
+      "column": "[PENANG]BukitJambul",
+      "name": "[Penang] Bukit Jambul"
+    },
+    {
+      "column": "[PENANG]AEONBUKITMERTAJAM",
+      "name": "[Penang] AEON MALL Bukit Mertajam"
+    },
+    {
+      "column": "[JOHOR]ParadigmMallJB",
+      "name": "[Johor] Paradigm Mall JB"
+    },
+    {
+      "column": "[JOHOR]BATUPAHATMALL",
+      "name": "[Johor] Batu Pahat Mall"
+    },
+    {
+      "column": "[KLT]KotaBharuMALL",
+      "name": "[Kelantan] Kota Bharu Mall"
+    },
+    {
+      "column": "[Sabah]Kubota",
+      "name": "[Sabah] Kubota Sentral"
+    },
+    {
+      "column": "[KLT]AEONKotaBharu",
+      "name": "[Kelantan] AEON Kota Bharu"
+    },
+    {
+      "column": "GiantShahAlam",
+      "name": "[Klang Valley] Giant Shah Alam Stadium"
+    },
+    {
+      "column": "Warehouse",
+      "name": "Warehouse"
+    }
+  ],
+  "prices": [
+    {
+      "column": "XOXBundlePrice",
+      "name": "xox_bundle_price"
+    },
+    {
+      "column": "AnsuranMudahPrice12Month",
+      "name": "ansuran_mudah_price_12month_tenure",
+      "monthly": true
+    },
+    {
+      "column": "AnsuranMudahPrice24Month",
+      "name": "ansuran_mudah_price_24month_tenure",
+      "monthly": true
+    },
+    {
+      "column": "AnsuranMudahPrice36Month",
+      "name": "ansuran_mudah_price_36month_tenure",
+      "monthly": true
+    },
+    {
+      "column": "SpaylaterPrice",
+      "name": "spaylater_price",
+      "monthly": true
+    },
+    {
+      "column": "GrabpaylaterPrice",
+      "name": "grabpaylater_price",
+      "monthly": true
+    }
+  ]
+}
