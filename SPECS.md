@@ -32,6 +32,8 @@ The data folder has one file for each source: stock, the trade-in reference, and
 - An empty source is valid data. Missing or unusable data is an operational failure, distinct from a genuine no-match result.
 - The health check shows the serving revision of each source, its age, and the most recent failure.
 
+The stock and trade-in files are exports of sheets that people curate. The service reads them as exported, with only generic cleanup: it ignores spaces and line breaks in column headers, and it reads filler values such as "N/A" and "Ask Store" as blank. The service has no mapping table for stores, plans, categories, or products. A new store, a new plan, or a new product group needs only a change in the data. It needs no change in the service code or configuration.
+
 ### MCP interface
 
 The service exposes the tools through MCP over Streamable HTTP. The service is stateless: each request stands alone, and the service keeps no MCP session between requests. Each MCP request carries the configured static bearer token. The service refuses a request with a missing or wrong token, and it runs no tool for that request. Request text, for example a device description or a location, has a bounded length. The service refuses longer text.
@@ -42,27 +44,32 @@ Device availability and sale or trade-in value read device descriptions with the
 
 Recognition:
 
-- A description is recognized when it names a supported category or gives an Apple model number such as "A2172". The categories are iPhone, Apple Watch, iPad, Mac, Pixel, Samsung, HONOR, OPPO, Vivo, PlayStation, Switch, and AirPods.
-- Common names and aliases name their category. For example, "Galaxy" names Samsung, "PS5" names PlayStation, "Nintendo" names Switch, and "MacBook", "iMac", and "Mac mini" name Mac.
-- A description that names only a category or an alias searches the whole category, for example "iPhone", "Galaxy", or "PS5". A product line is a model: "MacBook" matches MacBook Air and MacBook Pro, but not iMac.
+- The catalogue of each tool gives the categories, models, and specification values that matching knows. A new product group in the data is recognized with no code change.
+- A description is recognized when it names a category or a model of the catalogue, or when it gives an Apple model number such as "A2172".
+- The service has no alias table. The tool descriptions ask the agent to use full product names. A family word still matches through the catalogue models that contain it, for example "Galaxy" matches Samsung Galaxy S25.
+- A description that names only a category searches the whole category, for example "iPhone". A product line is a model: "MacBook" matches MacBook Air and MacBook Pro, but not iMac.
 
 Specifications:
 
 - Matching reads storage, color, condition, size, chipset, connectivity, material, generation, and year apart from the model. For example, "Used iPhone 12 Black 128GB" is the iPhone 12 in used condition, color Black, with 128GB storage.
+- Generic patterns read storage, sizes in inches or millimetres, years, ordinal generations such as "5th", condition words, and connectivity words. They do not depend on a product group.
 - GB and TB values stay distinct. Matching does not convert between the units, so 1TB does not match 1024GB. A memory value is not the storage: in "MacBook Pro 16GB RAM 1TB", the storage is 1TB.
-- With no other generation or size, a whole number up to 10 after an iPad line is a generation, and another number is a size. For example, "iPad Air 5" is the fifth generation, and "iPad Pro 11" and "iPad Air 12.9" are sizes.
 - Used, refurbished, pre-owned, and second-hand mean used condition.
-- WiFi or GPS is recognized with optional cellular, for example "WiFi+Cellular" or "GPS cellular". Cellular, LTE, 4G, or 5G alone means cellular capability: WiFi+Cellular, or GPS+Cellular for an Apple Watch.
-- A multiword color takes precedence over material, so "Natural Titanium" is a color and adds no material. "Titanium" alone is a material.
-- Chipsets such as M2, "M4 Max", and A17 are read only for Apple categories. "Galaxy A15" is a Samsung model, not a chipset.
+- WiFi or GPS is recognized with optional cellular, for example "WiFi+Cellular" or "GPS cellular". Cellular, LTE, 4G, or 5G alone means cellular capability, and matches the catalogue connectivity values with cellular, for example WiFi+Cellular or GPS+Cellular.
+- Colors, materials, and chipsets are the values that the catalogue uses for the category. A longer catalogue value takes precedence, so "Natural Titanium" is a color and adds no material when the catalogue has that color. "Galaxy A15" is a Samsung model when the Samsung rows have no chipset A15.
+- A bare number after a model, with no other generation or size, matches a generation or a size that the catalogue has for that model. For example, "iPad Air 5" is the fifth generation, and "iPad Pro 11" is the 11-inch size.
 - Specification comparisons ignore capitalization. A blank catalogue specification does not exclude a match. A color can match a longer catalogue color, for example Black matches Space Black.
+
+Catalogue models:
+
+- The service reads the model of a catalogue row from its product title. It removes the row's own specification values and the words that the generic patterns recognize. For example, the title "iPhone 12 128GB Black Used" gives the model iPhone 12. The same rule applies to each product group.
 
 Models:
 
 - A catalogue model matches when each of its words is in the description. Extra descriptive words, capitalization, and punctuation do not matter. For example, "used iPhone 12 with a cracked screen" matches iPhone 12.
 - Minor spelling mistakes still match when the numbers are the same. For example, "Iphne 15" matches iPhone 15, and "Galaxy Z Fold 7" matches Galaxy Z Fold7. A spelling tolerance never joins different numbers: iPhone 12 does not match iPhone 13.
 - Different numbered models and sibling product lines stay apart. For example, iPhone 13 does not match iPhone 13 Pro, iPhone 13 Pro does not match iPhone 13 Pro Max, and iPad Pro does not match iPad Air.
-- A family description without a number matches the numbered models of that family, but not a sibling line. For example, "iPad Air" matches iPad Air 5, and "Galaxy Z Fold" matches Galaxy Z Fold7 but not Galaxy Z Flip7.
+- A description without a number matches each catalogue model that contains all of its words. This includes the numbered models of that family, but not a sibling line. For example, "iPad Air" matches iPad Air 5, and "Galaxy Z Fold" matches Galaxy Z Fold7 but not Galaxy Z Flip7.
 
 ### Results
 
@@ -70,6 +77,7 @@ All tools follow the same result pattern:
 
 - A result is a JSON object with one list, named after what it holds, for example `devices`, `promotions`, or `locations`. Each entry is a flat object with snake_case field names. A field that the source does not supply is left out.
 - A price, a value, or a fixed amount is text with the market currency and the amount as supplied, for example "RM 1500". A monthly quote ends with "/month".
+- Names that come from the data, for example store names and plan names, appear as the data gives them.
 - A negative business outcome, for example no match or an unrecognized description, is a normal result with a short fixed sentence. Each outcome has its own sentence. All sentences use one consistent style: they state the outcome, and where useful, the next step for the agent.
 - A source failure or a location-service failure is an MCP error result. Its short message names the failed data or service. It gives no internal details.
 - A search that changes the request reports the changes in an `adjustments` object.
@@ -107,11 +115,11 @@ This tool helps the agent find a requested device, explain its availability and 
 
 The tool is `check_availability`. It accepts a device description (`model`), and optionally a promotion-only preference (`in_promo`), a budget range (`price_range`, two whole numbers with the lower first, for example "1000-2000"), and a price order (`sort_order`, `desc` or `asc`). When the request names no model, the search covers all eligible stock. A request that gives only a model number does not restrict stock by that number.
 
-A result lists at most ten `devices`. Each device shows its model, relevant specifications, condition, availability, and retail price (`retail_price`). It also shows each supplied promotion price (`promotion_price`), previous-month price (`last_month_price`), bundle price, and payment-plan price. Each bundle and payment-plan price has its own field, named after the plan and its tenure, for example `ansuran_mudah_price_12month_tenure`. A monthly quote is labelled as monthly and is not recalculated. A device includes checkout and video links (`checkout_link`, `video_link`) where the stock data supplies them. When a device has more than one video candidate, different calls can select different videos.
+A result lists at most ten `devices`. Each device shows its model, relevant specifications, condition, availability, and retail price (`retail_price`). It also shows each supplied promotion price (`promotion_price`), previous-month price (`last_month_price`), and plan price. Plan prices, for example bundle and payment-plan prices, are one object (`payment_plans`) keyed by the plan names from the stock file, for example `"Ansuran Mudah 12 months": "RM 96/month"`. A monthly quote is labelled as monthly and is not recalculated. A device includes checkout and video links (`checkout_link`, `video_link`) where the stock data supplies them. When a device has more than one video candidate, different calls can select different videos.
 
 A result includes only devices labelled Stock Present, Low Stock, or Out of Stock. It omits devices with any other stock status. Stores (`available_stores`) appear only for Stock Present and Low Stock devices. If such a device lists no branch, the result says "Online Only". Out of Stock devices show no stores.
 
-The tool has distinct outcomes for an unrecognized description, a recognized category that the catalogue does not contain, and a recognized search with no matches. Each of these differs from the outcome for unavailable or unusable source data.
+The tool has distinct outcomes for an unrecognized description and a recognized search with no matches. The unrecognized outcome names the categories of the catalogue. Each of these differs from the outcome for unavailable or unusable source data.
 
 ### Matching
 
@@ -130,9 +138,14 @@ A result identifies a newer or older model substitution (`model_substitution`). 
 
 ### Stock data
 
-The stock file gives, for each stock row, the category, the model, the supplied specifications, the condition, the quantity, the branch entries in branch order, the prices, and the links. Stock that the file marks explicitly as new has new condition. All other condition entries mean used.
+The stock file is the export of the stock sheet. Each row is one stock item. The file has a category column with the plain category name, for example iPhone, a product title column, the specification columns, a condition column, a quantity column, the price columns, the link columns, one column for each store, and one column for each plan price. `README.md` gives the column names.
 
-Stock classification compares the source quantity as text. A quantity that sorts after "3" in text order is Stock Present. Otherwise, exactly "0" is Out of Stock and any other value is Low Stock. These are text comparisons, not numeric thresholds. For example, 4 and 30 are Stock Present, while 10, 100, and a blank quantity are Low Stock. A supplied branch entry that is not exactly "0" includes that branch. This includes a blank entry. Results show the branches in branch order.
+- A store column has a header that starts with "Store:". The rest of the header is the store name that results show. The column order is the display order. A new store is a new column.
+- A plan column has a header that starts with "Plan:", or with "Monthly plan:" for a monthly quote. The rest of the header is the plan name. A new plan is a new column.
+- A new product group is a new category name in the category column.
+- Stock that the file marks explicitly as new has new condition. All other condition entries mean used.
+- A quantity above 3 is Stock Present. A quantity of 0 is Out of Stock. Any other quantity, also a blank quantity, is Low Stock.
+- A store entry that is not 0 includes that store. This includes a blank entry. Results show the stores in display order.
 
 Stock follows the source data rules in section 1. An empty catalogue is valid.
 
@@ -151,9 +164,10 @@ Stock follows the source data rules in section 1. An empty catalogue is valid.
 - When no device matches iPhone 16 and iPhone 17 is in stock, the result gives iPhone 17 as a newer substitution. When neither iPhone 17 nor iPhone 15 is in stock, the result is the no-match outcome.
 - Twelve matches return ten devices, highest price first by default and lowest price first on request.
 - A Stock Present device with no branch says "Online Only". An Out of Stock device shows no stores. A blank branch entry includes the branch and "0" excludes it.
-- Quantities "0", "4", and "10" give Out of Stock, Stock Present, and Low Stock.
-- A supplied monthly quote appears labelled as monthly, with its supplied value. Supplied checkout and video links appear.
-- These outcomes stay distinct: unrecognized description, category not in the catalogue, no match, empty list after price exclusion, and source failure. An unusable changed file keeps the previous version. A failed initial load never appears as no stock.
+- Quantities 0, 2, 4, and 10 give Out of Stock, Low Stock, Stock Present, and Stock Present. A blank quantity gives Low Stock.
+- A new store column appears in results under its header name, in column order, with no code change. A new plan column appears in `payment_plans` under its header name, with no code change. A new category in the stock file can be searched with no code change.
+- A supplied monthly quote appears labelled as monthly, with its supplied value. Supplied checkout and video links appear. "N/A" and "Ask Store" in the file show as no value.
+- These outcomes stay distinct: unrecognized description, no match, empty list after price exclusion, and source failure. A description of a category that the catalogue does not have gives the unrecognized outcome, which names the categories of the catalogue. An unusable changed file keeps the previous version. A failed initial load never appears as no stock.
 
 ## 3. Sale or trade-in value
 
@@ -163,7 +177,7 @@ This tool helps the agent identify the catalogue trade-in value of a customer's 
 
 The tool is `check_sale_or_trade_in_value`. It accepts a device description or an Apple model number (`model`). A result lists the matching variants as `devices`. Each variant shows its model, available specifications, year, and value (`trade_in_price`). The value is a catalogue value, not a binding offer based on inspection. Battery, screen, scratch, and dent information does not cause deductions.
 
-When ten or fewer variants match, the result lists all of them, newest year first, with stable ties. A missing year sorts as zero. When more than ten variants match, the tool asks for a narrower query and does not return a truncated list. The tool has distinct outcomes for an unrecognized description, a category that the tool does not offer, and no matching variant.
+When ten or fewer variants match, the result lists all of them, newest year first, with stable ties. A missing year sorts as zero. When more than ten variants match, the tool asks for a narrower query and does not return a truncated list. The tool has distinct outcomes for an unrecognized description and no matching variant. The unrecognized outcome names the categories of the reference, so that the agent knows which categories trade-in covers.
 
 An absent price defaults to zero. An explicitly blank price stays blank.
 
@@ -177,7 +191,7 @@ Color and condition do not change the value. A used or refurbished description c
 
 ### Reference data and failures
 
-The trade-in reference file gives, for each variant of the market, the category, the model, the model numbers, the specifications, the year, and the value. The reference follows the source data rules in section 1.
+The trade-in reference file is the export of the trade-in sheet. Each row is one variant of the market, with the plain category name, the model, the model numbers, the specifications, the year, and the value. `README.md` gives the column names. A new category is a new category name in the file. The reference follows the source data rules in section 1.
 
 ### Acceptance cases
 
@@ -188,7 +202,7 @@ The trade-in reference file gives, for each variant of the market, the category,
 - Ten matches return all ten. Eleven matches return a request for a narrower query. A variant from 2021 comes before a variant from 2019, and a variant with no year comes last.
 - "Black iPhone 12", "used iPhone 12 with a cracked screen", and "iPhone 12" give the same value for the same variant.
 - An absent price shows 0. A supplied blank price stays blank. Values show in RM.
-- These outcomes stay distinct: unrecognized model, unsupported category, no match, empty reference, and source failure.
+- These outcomes stay distinct: unrecognized model, no match, empty reference, and source failure. "Google Pixel 9" with no Pixel rows in the reference gives the unrecognized outcome, which names the categories of the reference.
 
 ## 4. Promotions
 
