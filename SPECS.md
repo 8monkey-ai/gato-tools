@@ -86,13 +86,14 @@ Models:
 All tools follow the same result pattern:
 
 - A result is a JSON object with one list, named after what it holds, for example `devices`, `promotions`, or `locations`. Each entry is a flat object with snake_case field names. A field that the source does not supply is left out.
+- A tool returns its result as MCP structured content (`structuredContent`). It also returns the same JSON object, serialized, in one text content block, for clients that do not read structured content. Each tool declares an output schema (`outputSchema`) for its result object.
 - A price, a value, or a fixed amount is text with the market currency and the amount as supplied, for example "RM 1029".
 - Names that come from the data, for example store names and plan names, appear as the data gives them.
 - A negative business outcome, for example no match or an unrecognized description, is a normal result with a short fixed sentence. Each outcome has its own sentence. All sentences use one consistent style: they state the outcome, and where useful, the next step for the agent.
-- A source failure or a location-service failure is an MCP error result. Its short message names the failed data or service. It gives no internal details.
+- A source failure or a location-service failure is an MCP error result. Its short message names the failed data or service, in one text content block. It gives no internal details and no structured content.
 - A search that changes the request reports the changes in an `adjustments` object.
 - The tool descriptions give the fixed explanations for the agent, for example that a trade-in value is not a binding offer. Results contain only data.
-- Tool names, input names, and output field names are a contract with the agent skills. They change only together with the skills.
+- Tool names, input names, output field names, and output schemas are a contract with the agent skills. They change only together with the skills.
 
 ### Health and logs
 
@@ -108,6 +109,7 @@ All tools follow the same result pattern:
 
 ### Acceptance cases
 
+- A successful tool result has the result object as structured content, and the same object as text. The structured content agrees with the output schema that the tool list gives for the tool. An error result has only its text message.
 - When the stock source is unavailable, promotions and location lookup still answer.
 - A request with text longer than the limit is refused.
 - An MCP request with a missing or wrong bearer token is refused and runs no tool. A tool call with the correct token needs no earlier request or session.
