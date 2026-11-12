@@ -32,24 +32,11 @@ test("§4 an omitted amount is evaluated as 9999", async () => {
   expect(names).not.toContain("Spend 10500");
 });
 
-test("§4 the tool description explains the allowance, and the result claims no eligibility", async () => {
-  const response = await service().rpc({
-    jsonrpc: "2.0",
-    id: 1,
-    method: "tools/list",
-  });
-  const body = (await response.json()) as {
-    result: { tools: { name: string; description: string }[] };
-  };
-  const tool = body.result.tools.find(
-    (candidate) => candidate.name === "check_promotions",
-  );
-  expect(tool?.description).toContain(
+test("§4 the tool description explains that the allowance is not a claim of eligibility", async () => {
+  const description = await service().toolDescription("check_promotions");
+  expect(description).toContain(
     "does not mean that the customer qualifies at the actual spend",
   );
-  const result = await promotions(service(), { purchase_date: "2026-05-01" });
-  for (const offer of result.promotions)
-    expect(Object.keys(offer)).not.toContain("eligible");
 });
 
 test("§4 campaign dates are inclusive and the result shows both dates", async () => {

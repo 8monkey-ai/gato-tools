@@ -70,7 +70,7 @@ test("§1 text at the limit is accepted", async () => {
   expect(result.error).toBeUndefined();
 });
 
-test("§1 an MY deployment exposes the four tools", async () => {
+test("§1 §3 an MY deployment exposes the four tools", async () => {
   expect(await service().listTools()).toEqual([
     "check_availability",
     "check_promotions",

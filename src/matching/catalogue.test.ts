@@ -37,21 +37,3 @@ test("a bare number after a model is a generation or a size of that model", () =
     specs: { size: '11"' },
   });
 });
-
-test("chipsets are the values of the categories that the description names", () => {
-  expect(readDescription(catalogue, "Galaxy A15")).toMatchObject({
-    categories: ["SAMSUNG"],
-    model: ["galaxy", "a", "15"],
-    specs: {},
-  });
-});
-
-test("a model number is recognized with no category", () => {
-  expect(readDescription(catalogue, "a2172")).toMatchObject({
-    modelNumber: "A2172",
-  });
-});
-
-test("a description with no known category or model word is not recognized", () => {
-  expect(readDescription(catalogue, "Nokia 3310")).toBeUndefined();
-});

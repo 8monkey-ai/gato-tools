@@ -7,7 +7,7 @@ import type { ToolDefinition } from "./tools/tool.ts";
 
 export type NamedTool = ToolDefinition & { name: string };
 
-/** Answers one MCP request. The service keeps no session between requests. */
+/** The service keeps no session, so each request gets its own MCP server. */
 export async function handleMcp(
   request: Request,
   tools: NamedTool[],

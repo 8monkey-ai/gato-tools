@@ -8,10 +8,6 @@ const service = useService(async () => ({
   files: await sampleFiles(),
 }));
 
-test("§3 an MY deployment exposes the tool", async () => {
-  expect(await service().listTools()).toContain(tool);
-});
-
 test("§3 a model number matches the rows whose ModelNumber contains it", async () => {
   const result = await value(service(), "A2172");
   expect(result.devices.map((device) => device.storage)).toEqual([
@@ -63,4 +59,10 @@ test("§3 a category that the reference does not have gives the unrecognized out
     message:
       "The device is not recognized. Trade-in categories: Mac, iPad, iPhone, Samsung. Ask for the full product name.",
   });
+});
+
+test("§3 the tool description says that the value is not a binding offer and has no deductions", async () => {
+  const description = await service().toolDescription(tool);
+  expect(description).toContain("not a binding offer");
+  expect(description).toContain("Battery, screen, scratch, dent");
 });

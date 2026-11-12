@@ -49,7 +49,6 @@ const genericPatterns: [
   ["connectivity", /\b(?:cellular|lte|4g|5g)\b/gi, () => "cellular"],
 ];
 
-/** Reads the specifications that generic patterns recognize, and gives the text without them. */
 export function readGenericSpecs(text: string): { specs: Specs; rest: string } {
   const specs: Specs = {};
   let rest = text;

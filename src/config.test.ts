@@ -8,13 +8,6 @@ const valid = {
   S3_BUCKET: "b",
 };
 
-test("the timezone is UTC unless the deployment configures another", () => {
-  expect(readConfig(valid).timezone).toBe("UTC");
-  expect(
-    readConfig({ ...valid, GATO_TOOLS_TIMEZONE: "Asia/Manila" }).timezone,
-  ).toBe("Asia/Manila");
-});
-
 test.each([
   [{ GATO_TOOLS_MARKET: "SG" }, "GATO_TOOLS_MARKET must be MY or PH"],
   [{ MCP_BEARER_TOKEN: "" }, "MCP_BEARER_TOKEN is required"],

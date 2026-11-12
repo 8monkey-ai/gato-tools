@@ -22,7 +22,6 @@ export interface Query {
   modelNumber?: string;
 }
 
-/** A catalogue entry with the words of its model. */
 export type Entry<T extends Device = Device> = T & { modelWords: string[] };
 
 interface Group<T extends Device> {

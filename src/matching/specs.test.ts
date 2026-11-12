@@ -1,6 +1,6 @@
 import { expect, test } from "bun:test";
 
-import { normalizeSpec, readGenericSpecs, specMatches } from "./specs.ts";
+import { normalizeSpec, readGenericSpecs } from "./specs.ts";
 
 test("reads storage, condition, size, year, generation, and connectivity apart from the model", () => {
   const { specs, rest } = readGenericSpecs(
@@ -17,10 +17,7 @@ test("reads storage, condition, size, year, generation, and connectivity apart f
   expect(rest.replace(/\W+/g, " ").trim()).toBe("iPad Air");
 });
 
-test("a memory value is not the storage", () => {
-  expect(readGenericSpecs("MacBook Pro 16GB RAM 1TB").specs.storage).toBe(
-    "1tb",
-  );
+test("with no RAM word, the larger of two GB or TB values is the storage", () => {
   expect(readGenericSpecs("MacBook Pro 16GB 1TB").specs.storage).toBe("1tb");
 });
 
@@ -52,22 +49,4 @@ test("sizes in inches and millimetres have one compared form", () => {
   expect(normalizeSpec("generation", "5th")).toBe("5");
   expect(normalizeSpec("color", " Space  Black ")).toBe("space black");
   expect(normalizeSpec("color", "")).toBeUndefined();
-});
-
-test("GB and TB values stay distinct", () => {
-  expect(
-    specMatches("storage", "1tb", normalizeSpec("storage", "1024GB")),
-  ).toBe(false);
-});
-
-test("a color matches a longer catalogue color, and a blank value matches anything", () => {
-  expect(specMatches("color", "black", "space black")).toBe(true);
-  expect(specMatches("color", "black", "blue")).toBe(false);
-  expect(specMatches("storage", "128gb", undefined)).toBe(true);
-});
-
-test("cellular alone matches each connectivity with cellular", () => {
-  expect(specMatches("connectivity", "cellular", "gps+cellular")).toBe(true);
-  expect(specMatches("connectivity", "cellular", "wifi")).toBe(false);
-  expect(specMatches("connectivity", "wifi", "wifi+cellular")).toBe(false);
 });

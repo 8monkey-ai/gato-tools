@@ -23,7 +23,6 @@ export function correctSpelling(word: string, known: string[]): string {
   return distance(word, nearest) <= (word.length >= 7 ? 2 : 1) ? nearest : word;
 }
 
-/** Finds a phrase as whole words, with no regard to capitalization. */
 export function phrasePattern(phrase: string, flags = "i"): RegExp {
   const escaped = phrase
     .replace(/[.*+?^${}()|[\]\\]/g, "\\$&")

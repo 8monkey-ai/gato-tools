@@ -183,6 +183,13 @@ function client(url: () => string) {
       },
       body: JSON.stringify(body),
     });
+  const tools = async () => {
+    const response = await rpc({ jsonrpc: "2.0", id: 1, method: "tools/list" });
+    const body = (await response.json()) as {
+      result: { tools: { name: string; description: string }[] };
+    };
+    return body.result.tools;
+  };
   return {
     rpc,
     /** Calls a tool and gives the parsed result, or the error text for an error result. */
@@ -204,15 +211,10 @@ function client(url: () => string) {
         : (JSON.parse(text) as Record<string, unknown>);
     },
     async listTools() {
-      const response = await rpc({
-        jsonrpc: "2.0",
-        id: 1,
-        method: "tools/list",
-      });
-      const body = (await response.json()) as {
-        result: { tools: { name: string }[] };
-      };
-      return body.result.tools.map((tool) => tool.name).toSorted();
+      return (await tools()).map((tool) => tool.name).toSorted();
+    },
+    async toolDescription(name: string) {
+      return (await tools()).find((tool) => tool.name === name)?.description;
     },
     health: () => fetch(`${url()}/health`),
     live: () => fetch(`${url()}/live`),

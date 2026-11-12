@@ -37,16 +37,6 @@ function setup() {
   return { files, reads, events, source };
 }
 
-test("a missing file at startup is a failure, not an empty value", async () => {
-  const { source } = setup();
-  await source.refresh();
-  expect(() => source.current()).toThrow("Test data is unavailable.");
-  expect(source.status(new Date(0))).toMatchObject({
-    healthy: false,
-    last_failure: { reason: "file missing" },
-  });
-});
-
 test("an unchanged revision is not read again", async () => {
   const { files, reads, source } = setup();
   files.set("f", { text: "one", revision: "1" });

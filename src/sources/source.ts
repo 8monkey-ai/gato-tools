@@ -6,7 +6,6 @@ export interface StoredFile {
   modified: Date;
 }
 
-/** Read-only access to the files in the source bucket. */
 export interface FileStore {
   /** Gives undefined when the file does not exist. */
   stat: (key: string) => Promise<StoredFile | undefined>;
