@@ -174,14 +174,13 @@ function isAvailable(item: StockItem): boolean {
 
 function arrange(items: StockMatch[], order: "asc" | "desc"): StockMatch[] {
   const direction = order === "asc" ? 1 : -1;
-  return items
-    .filter((item) => price(item.row.RetailPrice) !== undefined)
-    .toSorted(
-      (a, b) =>
-        Number(isAvailable(b)) - Number(isAvailable(a)) ||
-        direction * (sortPrice(a) - sortPrice(b)),
-    )
-    .slice(0, 10);
+  return (
+    items
+      .filter((item) => price(item.row.RetailPrice) !== undefined)
+      // Step 3 leaves only available stock or only No Stock, so available stock is always first.
+      .toSorted((a, b) => direction * (sortPrice(a) - sortPrice(b)))
+      .slice(0, 10)
+  );
 }
 
 function sortPrice(item: StockItem): number {

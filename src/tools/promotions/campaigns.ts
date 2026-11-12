@@ -6,6 +6,7 @@ import {
   type Device,
 } from "../../matching/catalogue.ts";
 import { readGenericSpecs } from "../../matching/specs.ts";
+import { words } from "../../matching/words.ts";
 
 const campaignSchema = z.object({
   name: z.string(),
@@ -40,7 +41,14 @@ export function readCampaigns(text: string): Campaigns {
   const models = list.flatMap((campaign) =>
     (campaign.eligible_models ?? []).map((name) => {
       const { specs, rest } = readGenericSpecs(name);
-      return { category: "", model: rest, specs, name, campaign };
+      // The brand word is the category, so that it is optional as in the stock catalogue.
+      return {
+        category: words(rest)[0] ?? "",
+        model: rest,
+        specs,
+        name,
+        campaign,
+      };
     }),
   );
   return { list, models: buildCatalogue(models) };

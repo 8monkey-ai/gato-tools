@@ -13,6 +13,7 @@ export type SpecName =
 export type Specs = Partial<Record<SpecName, string>>;
 
 // Order matters: a memory value is removed before storage, and WiFi or GPS before cellular alone.
+// A memory value and a percentage, for example a battery health, are not specifications.
 const genericPatterns: [
   SpecName | undefined,
   RegExp,
@@ -23,6 +24,7 @@ const genericPatterns: [
     /\b\d+\s*gb\s*(?:of\s+)?(?:unified\s+)?(?:ram|memory)\b/gi,
     () => "",
   ],
+  [undefined, /\b\d+(?:\.\d+)?\s*%/g, () => ""],
   ["storage", /\b(\d+)\s*(gb|tb)\b/gi, (m) => `${m[1]}${m[2]}`.toLowerCase()],
   [
     "size",

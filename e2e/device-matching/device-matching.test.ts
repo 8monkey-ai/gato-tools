@@ -152,8 +152,11 @@ test("§1 a family word matches through the catalogue models that contain it", a
   expect(await value("Galaxy 256GB")).toHaveLength(4);
 });
 
-test("§1 Galaxy A15 is a Samsung model when the Samsung rows have no chipset A15", async () => {
+test("§1 Galaxy A15 is a Samsung model, and the article a is not a model word", async () => {
   expect(await value("Galaxy A15")).toEqual(["SAMSUNG GALAXY A15 256GB"]);
+  expect(await value("Samsung Galaxy S25 Ultra with a cracked screen")).toEqual(
+    ["SAMSUNG GALAXY S25 ULTRA 256GB"],
+  );
 });
 
 test("§1 a memory value is not the storage", async () => {

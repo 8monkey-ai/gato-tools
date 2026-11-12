@@ -29,7 +29,7 @@ The service reads its configuration from environment variables. It does not star
 | `S3_ENDPOINT`              | No       | The endpoint of an S3-compatible store, for example Cloudflare R2.                              |
 | `PORT`                     | No       | The HTTP port. The default is `3000`.                                                           |
 
-Bun reads the `S3_*` variables (or the `AWS_*` equivalents) for its built-in S3 client. The service only reads the bucket, so the credentials need only the read permission (`s3:GetObject`).
+Bun reads the `S3_*` variables (or the `AWS_*` equivalents) for its built-in S3 client. The service only reads the bucket. Give the credentials `s3:GetObject` and `s3:ListBucket`. Without `s3:ListBucket`, S3 answers a request for a missing file with 403, not 404, and the health check shows `file unreadable` instead of `file missing`.
 
 ## Run
 
@@ -51,6 +51,8 @@ Fixed limits:
 - A request body has a maximum of 64 KiB.
 - A wait for the Google Geocoding API stops after 5 seconds.
 - A wait for the bucket stops after 30 seconds.
+
+The MCP SDK refuses a tool call with input that does not agree with the input schema, for example text that is too long, before the tool runs. The service does not log these refused calls as `tool_call` events, because the SDK gives no hook for them.
 
 ## Checks
 

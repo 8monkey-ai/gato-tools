@@ -30,6 +30,24 @@ const service = useService(async () => ({
       row("Used iPhone 14 512GB", "Discontinued"),
       row("Used iPhone 3 16GB", "Low Stock"),
       row("Used iPhone 3 32GB", "No Stock"),
+      stockRow({
+        Category: "U_IPAD",
+        Model: "Used iPad Pro 5th 64GB",
+        Generation: "5th",
+        "No stock at all": "No Stock",
+      }),
+      stockRow({
+        Category: "U_IPAD",
+        Model: "Used iPad Pro 5th 128GB",
+        Generation: "5th",
+        "No stock at all": "No Stock",
+      }),
+      stockRow({
+        Category: "U_IPAD",
+        Model: "Used iPad Pro 6th 128GB",
+        Generation: "6th",
+        "No stock at all": "Low Stock",
+      }),
     ]),
   },
 }));
@@ -81,4 +99,19 @@ test("§2 labels appear as the stock data gives them, and other labels do not ap
   const result = await check(service(), { model: "iPhone 14 512GB" });
   expect(models(result)).toEqual(["Used iPhone 14 128GB"]);
   expect(result.devices[0]?.availability).toBe("Stock Present");
+});
+
+test("§2 the iPad Pro 6th generation comes after the 5th generation", async () => {
+  const result = await check(service(), { model: "iPad Pro 5th" });
+  expect(models(result)).toEqual(["Used iPad Pro 6th 128GB"]);
+  expect(result.adjustments).toEqual({ model_substitution: "newer" });
+});
+
+test("§2 with no generation in the request, the next model follows the first match", async () => {
+  const result = await check(service(), { model: "iPad Pro 64GB" });
+  expect(models(result)).toEqual(["Used iPad Pro 6th 128GB"]);
+  expect(result.adjustments).toEqual({
+    dropped_filters: ["storage"],
+    model_substitution: "newer",
+  });
 });

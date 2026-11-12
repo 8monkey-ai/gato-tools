@@ -108,3 +108,11 @@ test("§2 a request with only a model number does not restrict stock", async () 
     models(all),
   );
 });
+
+test("§1 a stock title with a size and a generation matches its own row", async () => {
+  const result = await check(service(), {
+    model: "Used iPad Pro 11 3rd 128GB WiFi",
+  });
+  expect(models(result)).toEqual(["Used iPad Pro 11 3rd 128GB WiFi"]);
+  expect(result.adjustments).toBeUndefined();
+});

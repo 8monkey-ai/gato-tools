@@ -40,10 +40,11 @@ test("§3 a missing variant gives the no-match outcome and no neighbor", async (
   });
 });
 
-test("§3 color and condition do not change the value", async () => {
+test("§3 color, condition, battery, and screen details do not change the value", async () => {
   for (const model of [
     "Black iPhone 12 128GB",
     "used iPhone 12 128GB with a cracked screen",
+    "iPhone 12 128GB battery 85%",
     "iPhone 12 128GB",
   ]) {
     const result = await value(service(), model);

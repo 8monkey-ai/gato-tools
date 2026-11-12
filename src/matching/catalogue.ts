@@ -110,7 +110,12 @@ export function readDescription<T extends Device>(
   description: string,
 ): Query | undefined {
   const modelNumber = /\bA\d{4}\b/i.exec(description)?.[0].toUpperCase();
-  const generic = readGenericSpecs(description.replace(/\bA\d{4}\b/gi, " "));
+  // An article is not a model word, even when a model has the letter "A", as in Galaxy A15.
+  const text = description.replace(
+    /\bA\d{4}\b|(?<!\S)(?:a|an|the)(?!\S)/gi,
+    " ",
+  );
+  const generic = readGenericSpecs(text);
   const firstWords = words(generic.rest).map((word) =>
     correctSpelling(word, catalogue.vocabulary),
   );
@@ -177,22 +182,33 @@ function readBareNumber<T extends Device>(
   query: Query,
 ): Query {
   const { model, specs } = query;
-  if (!model || specs.generation || specs.size) return query;
+  if (!model || (specs.generation && specs.size)) return query;
   const devices = devicesOf(catalogue, query.categories);
-  if (devices.some((device) => matchesModel(device, model))) return query;
   const number = model.findLast(isNumber);
-  if (!number) return query;
+  if (!number || devices.some((device) => matchesModel(device, model)))
+    return query;
   const rest = model.filter((word) => word !== number);
   const candidates = devices.filter((device) => matchesModel(device, rest));
+  const read = numberSpec(candidates, number, specs);
+  return read ? { ...query, model: rest, specs: { ...specs, ...read } } : query;
+}
+
+/** A generation takes precedence over a size. A value that the request gives stays. */
+function numberSpec(
+  candidates: Entry[],
+  number: string,
+  specs: Specs,
+): Specs | undefined {
   const generation = normalizeSpec("generation", number);
-  if (candidates.some((device) => device.specs.generation === generation))
-    return { ...query, model: rest, specs: { ...specs, generation } };
+  if (
+    !specs.generation &&
+    candidates.some((device) => device.specs.generation === generation)
+  )
+    return { generation };
   const size = candidates.find(
     (device) => Number.parseFloat(device.specs.size ?? "") === Number(number),
-  );
-  return size
-    ? { ...query, model: rest, specs: { ...specs, size: size.specs.size } }
-    : query;
+  )?.specs.size;
+  return !specs.size && size ? { size } : undefined;
 }
 
 function newGroup<T extends Device>(category: string): Group<T> {

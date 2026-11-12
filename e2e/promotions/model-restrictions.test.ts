@@ -7,6 +7,7 @@ const service = useCampaigns(() => [
   { name: "Number 14", eligible_models: ["iPhone 14"] },
   { name: "Base 15", eligible_models: ["iPhone 15"] },
   { name: "Air 1TB", eligible_models: ["New iPhone Air 1TB"] },
+  { name: "Samsung", eligible_models: ["Used Samsung Galaxy S25 Ultra 256GB"] },
   { name: "All models" },
 ]);
 
@@ -43,6 +44,12 @@ test("§4 a request without a model includes model-restricted offers and shows t
     ["Number 14", "iPhone 14"],
     ["Base 15", "iPhone 15"],
     ["Air 1TB", "New iPhone Air 1TB"],
+    ["Samsung", "Used Samsung Galaxy S25 Ultra 256GB"],
     ["All models", undefined],
   ]);
+});
+
+test("§4 the brand word of an eligible model is optional, as in device matching", async () => {
+  expect(await at("Galaxy S25 Ultra 256GB")).toEqual(["Samsung", "All models"]);
+  expect(await at("Galaxy S25 Ultra 512GB")).toEqual(["All models"]);
 });
