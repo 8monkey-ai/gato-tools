@@ -9,14 +9,21 @@ interface Routes {
 }
 
 export function createFetchHandler({ mcpBearerToken, health, mcp }: Routes) {
-  const expected = digest(`Bearer ${mcpBearerToken}`);
+  const expected = digest(mcpBearerToken);
   return (request: Request): Response | Promise<Response> => {
     const { pathname } = new URL(request.url);
     if (pathname === "/live") return Response.json({ status: "ok" });
     if (pathname === "/health") return healthResponse(health());
     if (pathname !== "/mcp") return new Response("Not found", { status: 404 });
-    const given = digest(request.headers.get("authorization") ?? "");
-    if (!timingSafeEqual(given, expected))
+    // The service keeps no session, so it offers no GET stream and no DELETE.
+    if (request.method !== "POST")
+      return new Response("Method not allowed", {
+        status: 405,
+        headers: { allow: "POST" },
+      });
+    const [, given = ""] =
+      /^Bearer (.+)$/i.exec(request.headers.get("authorization") ?? "") ?? [];
+    if (!timingSafeEqual(digest(given), expected))
       return new Response("Unauthorized", {
         status: 401,
         headers: { "www-authenticate": "Bearer" },

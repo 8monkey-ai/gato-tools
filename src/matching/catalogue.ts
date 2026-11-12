@@ -22,10 +22,13 @@ export interface Query {
   modelNumber?: string;
 }
 
-interface Group<T> {
+/** A catalogue entry with the words of its model. */
+export type Entry<T extends Device = Device> = T & { modelWords: string[] };
+
+interface Group<T extends Device> {
   category: string;
   categoryWords: string[];
-  devices: (T & { modelWords: string[] })[];
+  devices: Entry<T>[];
   vocabulary: string[];
   values: [SpecName, string][];
 }
@@ -48,10 +51,12 @@ export function buildCatalogue<T extends Device>(devices: T[]): Catalogue<T> {
     group.vocabulary.push(...modelWords);
     for (const name of catalogueSpecs) {
       const value = device.specs[name];
-      if (value) group.values.push([name, value]);
+      if (value && !group.values.some(([, known]) => known === value))
+        group.values.push([name, value]);
     }
   }
-  const all = [...groups.values()].map(finishGroup);
+  const all = [...groups.values()];
+  for (const group of all) group.vocabulary = unique(group.vocabulary);
   return {
     categories: all.map((group) => group.category),
     groups: all,
@@ -59,23 +64,20 @@ export function buildCatalogue<T extends Device>(devices: T[]): Catalogue<T> {
   };
 }
 
-export function categoryWords(category: string): string[] {
+function categoryWords(category: string): string[] {
   return words(category.replace(/_/g, " "));
 }
 
 export function devicesOf<T extends Device>(
   catalogue: Catalogue<T>,
-  categories: string[],
+  categories = catalogue.categories,
 ) {
   return catalogue.groups
     .filter((group) => categories.includes(group.category))
     .flatMap((group) => group.devices);
 }
 
-export function matchesQuery(
-  device: Device & { modelWords: string[] },
-  query: Query,
-): boolean {
+export function matchesQuery(device: Entry, query: Query): boolean {
   return (
     query.categories.includes(device.category) &&
     matchesModel(device, query.model) &&
@@ -89,10 +91,7 @@ export function matchesQuery(
  * A model matches when it has each word of the request, and, for a request with a number,
  * the request has each word of the model. The category word of a model with other words is optional.
  */
-export function matchesModel(
-  device: Device & { modelWords: string[] },
-  wanted: string[] | undefined,
-): boolean {
+function matchesModel(device: Entry, wanted: string[] | undefined): boolean {
   if (!wanted) return true;
   const own = categoryWords(device.category);
   const covered = wanted.every(
@@ -197,22 +196,14 @@ function readBareNumber<T extends Device>(
     : query;
 }
 
-function newGroup<T>(category: string): Group<T> {
+function newGroup<T extends Device>(category: string): Group<T> {
+  const own = categoryWords(category);
   return {
     category,
-    categoryWords: categoryWords(category),
+    categoryWords: own,
     devices: [],
-    vocabulary: [],
+    vocabulary: [...own],
     values: [],
-  };
-}
-
-function finishGroup<T>(group: Group<T>): Group<T> {
-  const values = new Map(group.values.map(([name, value]) => [value, name]));
-  return {
-    ...group,
-    vocabulary: unique([...group.vocabulary, ...group.categoryWords]),
-    values: [...values].map(([value, name]) => [name, value]),
   };
 }
 

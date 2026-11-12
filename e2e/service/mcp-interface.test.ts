@@ -27,6 +27,27 @@ test("§1 a tool call with the correct token needs no earlier request or session
   expect(body.result.isError).toBeUndefined();
 });
 
+test("§1 the service keeps no MCP session, so it offers no GET stream and no session end", async () => {
+  for (const method of ["GET", "DELETE"]) {
+    const response = await fetch(`${service().url()}/mcp`, {
+      method,
+      headers: {
+        authorization: `Bearer ${token}`,
+        accept: "text/event-stream",
+      },
+    });
+    expect(response.status).toBe(405);
+  }
+});
+
+test("§1 the bearer scheme name has no regard to capitalization", async () => {
+  const response = await service().rpc(
+    toolCall("check_promotions", {}),
+    `bearer ${token}`,
+  );
+  expect(response.status).toBe(200);
+});
+
 test("§1 a request with text longer than the limit is refused", async () => {
   const long = "a".repeat(201);
   for (const [name, args] of [

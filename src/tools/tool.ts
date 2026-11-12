@@ -2,16 +2,7 @@ import type { z, ZodRawShape } from "zod";
 
 import type { Log } from "../log.ts";
 import type { Market, MarketCode } from "../market.ts";
-import type { Source } from "../sources/source.ts";
-
-export interface SourceFile<T> {
-  /** The source name in the health check and the logs. */
-  name: string;
-  file: string;
-  /** The data name in the failure message to the agent. */
-  label: string;
-  parse: (text: string) => T;
-}
+import type { Source, SourceFile } from "../sources/source.ts";
 
 export interface ToolEnvironment {
   market: Market;

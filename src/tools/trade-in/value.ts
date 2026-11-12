@@ -1,11 +1,12 @@
 import {
   devicesOf,
+  type Entry,
   matchesQuery,
   readDescription,
 } from "../../matching/catalogue.ts";
-import type { Reference } from "./reference.ts";
+import type { Reference, Variant } from "./reference.ts";
 
-export type Match = Reference["groups"][number]["devices"][number];
+export type Match = Entry<Variant>;
 
 /**
  * Gives the reference variants that a description matches, or undefined when the description is not recognized.
@@ -18,7 +19,7 @@ export function findVariants(
   const query = readDescription(reference, description);
   if (!query) return undefined;
   const { modelNumber } = query;
-  const devices = devicesOf(reference, reference.categories);
+  const devices = devicesOf(reference);
   if (modelNumber)
     return devices.filter((device) =>
       device.row.ModelNumber?.toUpperCase().includes(modelNumber),

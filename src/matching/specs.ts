@@ -16,37 +16,37 @@ export type Specs = Partial<Record<SpecName, string>>;
 const genericPatterns: [
   SpecName | undefined,
   RegExp,
-  (m: RegExpExecArray) => string,
+  (match: [string, ...string[]]) => string,
 ][] = [
   [
     undefined,
-    /\b\d+\s*gb\s*(?:of\s+)?(?:unified\s+)?(?:ram|memory)\b/i,
+    /\b\d+\s*gb\s*(?:of\s+)?(?:unified\s+)?(?:ram|memory)\b/gi,
     () => "",
   ],
-  ["storage", /\b(\d+)\s*(gb|tb)\b/i, (m) => `${m[1]}${m[2]}`.toLowerCase()],
+  ["storage", /\b(\d+)\s*(gb|tb)\b/gi, (m) => `${m[1]}${m[2]}`.toLowerCase()],
   [
     "size",
-    /(?<![\w.])(\d+(?:\.\d+)?)\s*(mm\b|(?:\s*(?:["”″]|''|-?\s*inch(?:es)?\b))+)/i,
+    /(?<![\w.])(\d+(?:\.\d+)?)\s*(mm\b|(?:\s*(?:["”″]|''|-?\s*inch(?:es)?\b))+)/gi,
     readSize,
   ],
-  ["year", /\b(?:19|20)\d{2}\b/, (m) => m[0]],
+  ["year", /\b(?:19|20)\d{2}\b/g, (m) => m[0]],
   [
     "generation",
-    /\b(\d+)(?:st|nd|rd|th)\b(?:\s*gen(?:eration)?\b)?/i,
+    /\b(\d+)(?:st|nd|rd|th)\b(?:\s*gen(?:eration)?\b)?/gi,
     (m) => String(Number(m[1])),
   ],
   [
     "condition",
-    /\b(?:used|refurbished|refurb|pre-?owned|second-?\s?hand)\b/i,
+    /\b(?:used|refurbished|refurb|pre-?owned|second-?\s?hand)\b/gi,
     () => "used",
   ],
-  ["condition", /\b(?:brand\s+)?new\b/i, () => "new"],
+  ["condition", /\b(?:brand\s+)?new\b/gi, () => "new"],
   [
     "connectivity",
-    /\b(wi-?fi|gps)(?:\s*(?:\+|&|and|\/)?\s*(cellular|lte|4g|5g))?\b/i,
+    /\b(wi-?fi|gps)(?:\s*(?:\+|&|and|\/)?\s*(cellular|lte|4g|5g))?\b/gi,
     readConnectivity,
   ],
-  ["connectivity", /\b(?:cellular|lte|4g|5g)\b/i, () => "cellular"],
+  ["connectivity", /\b(?:cellular|lte|4g|5g)\b/gi, () => "cellular"],
 ];
 
 /** Reads the specifications that generic patterns recognize, and gives the text without them. */
@@ -54,10 +54,8 @@ export function readGenericSpecs(text: string): { specs: Specs; rest: string } {
   const specs: Specs = {};
   let rest = text;
   for (const [name, pattern, read] of genericPatterns) {
-    const global = new RegExp(pattern.source, `${pattern.flags}g`);
-    rest = rest.replace(global, (whole: string) => {
-      const match = pattern.exec(whole);
-      if (name && match) specs[name] = keep(name, specs[name], read(match));
+    rest = rest.replace(pattern, (whole: string, ...groups: string[]) => {
+      if (name) specs[name] = keep(name, specs[name], read([whole, ...groups]));
       return " ";
     });
   }
@@ -102,12 +100,12 @@ function storageSize(value: string): number {
   return Number.parseInt(value) * (value.endsWith("tb") ? 1024 : 1);
 }
 
-function readSize(match: RegExpExecArray): string {
+function readSize(match: string[]): string {
   const unit = match[2]?.toLowerCase().startsWith("mm") ? "mm" : '"';
   return `${Number(match[1])}${unit}`;
 }
 
-function readConnectivity(match: RegExpExecArray): string {
+function readConnectivity(match: string[]): string {
   const base = match[1]?.toLowerCase().startsWith("gps") ? "gps" : "wifi";
   return match[2] ? `${base}+cellular` : base;
 }

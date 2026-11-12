@@ -31,9 +31,11 @@ export interface WatchedSource<T> extends Source<T> {
   status(now: Date): SourceStatus;
 }
 
-interface SourceOptions<T> {
+export interface SourceFile<T> {
+  /** The source name in the health check and the logs. */
   name: string;
   file: string;
+  /** The data name in the failure message to the agent. */
   label: string;
   parse: (text: string) => T;
 }
@@ -41,7 +43,7 @@ interface SourceOptions<T> {
 const timeoutMs = 30_000;
 
 export function watchSource<T>(
-  { name, file, label, parse }: SourceOptions<T>,
+  { name, file, label, parse }: SourceFile<T>,
   store: FileStore,
   log: Log,
 ): WatchedSource<T> {
@@ -70,7 +72,7 @@ interface State<T> {
   failure?: { reason: string; revision?: string; time: Date };
 }
 
-type Loader<T> = Omit<SourceOptions<T>, "label">;
+type Loader<T> = Omit<SourceFile<T>, "label">;
 
 async function load<T>(
   state: State<T>,

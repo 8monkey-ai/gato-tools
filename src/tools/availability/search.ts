@@ -1,5 +1,6 @@
 import {
   devicesOf,
+  type Entry,
   matchesQuery,
   type Query,
 } from "../../matching/catalogue.ts";
@@ -14,7 +15,7 @@ export interface StockRequest {
   order: "asc" | "desc";
 }
 
-export type StockMatch = Stock["groups"][number]["devices"][number];
+export type StockMatch = Entry<StockItem>;
 
 export interface StockResult {
   items: StockMatch[];
@@ -70,11 +71,9 @@ function findRelaxed(
   request: Omit<StockRequest, "order">,
   onlyAvailable: boolean,
 ) {
-  const pool = (
-    request.query
-      ? devicesOf(stock, request.query.categories)
-      : stock.groups.flatMap((g) => g.devices)
-  ).filter((item) => !onlyAvailable || isAvailable(item));
+  const pool = devicesOf(stock, request.query?.categories).filter(
+    (item) => !onlyAvailable || isAvailable(item),
+  );
   for (const attempt of attempts(request)) {
     const items = pool.filter((item) => satisfies(item, attempt));
     if (items.length) return { items, droppedFilters: attempt.report };
@@ -160,7 +159,7 @@ function shiftQuery(
         specs: { ...base.specs, [name]: String(Number(value) + step) },
       };
   }
-  const index = model?.findLastIndex((word) => isNumber(word)) ?? -1;
+  const index = model?.findLastIndex(isNumber) ?? -1;
   const number = Number(model?.[index]);
   if (!model || index < 0 || !Number.isInteger(number) || number + step < 0)
     return undefined;

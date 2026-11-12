@@ -46,7 +46,7 @@ function eligibleCampaigns(
   model: string,
 ): Set<Campaign> {
   const query = readDescription(models, model);
-  const entries = devicesOf(models, models.categories);
+  const entries = devicesOf(models);
   const text = words(model).join(" ");
   const matching = query
     ? entries.filter((entry) => matchesQuery(entry, query))
