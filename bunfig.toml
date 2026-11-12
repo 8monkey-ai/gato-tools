@@ -22,3 +22,5 @@ maxWarnings = 0
 [fmt]
 # The tool sets the import order, so authors do not.
 sortImports = true
+# Code blocks in the docs show data exactly as the sources give it.
+embeddedLanguageFormatting = "off"
