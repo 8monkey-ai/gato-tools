@@ -8,11 +8,11 @@ This specification is the source of truth for the required product behavior and 
 
 ## 1. Service and markets
 
-The service is a separate TypeScript service that runs on Bun. It exposes the tools through MCP and reads its source data from files in a mounted data folder. Integration details follow the [MCP documentation](https://modelcontextprotocol.io/docs/getting-started/intro). A failure in one tool does not prevent unrelated tools from operating.
+The service is a separate TypeScript service that runs on Bun. It exposes the tools through MCP and reads its source data from files in an S3 bucket. Integration details follow the [MCP documentation](https://modelcontextprotocol.io/docs/getting-started/intro). A failure in one tool does not prevent unrelated tools from operating.
 
-The tools need no conversation history. They do not generate replies, send customer messages, reserve stock, or process purchases or payments. The deployment owns hosting, credentials, releases, the content of the data folder, backups, and restoration.
+The tools need no conversation history. They do not generate replies, send customer messages, reserve stock, or process purchases or payments. The deployment owns hosting, credentials, releases, backups, and restoration. The operators own the files in the bucket.
 
-Each deployment selects one market, the MCP bearer token, the Google Geocoding API key, the data folder, and the timezone:
+Each deployment selects one market, the MCP bearer token, the Google Geocoding API key, the S3 bucket and its credentials, and the timezone:
 
 | Market      | Code | Currency |
 | ----------- | ---- | -------- |
@@ -23,16 +23,25 @@ Prices, values, and fixed amounts use the currency of the configured market. Dat
 
 ### Source data
 
-The data folder has one file for each source: stock, the trade-in reference, and campaigns. The deployment keeps the files up to date. The service only reads the folder, and it never writes to it. Each source follows these rules:
+The operators upload the source files to the S3 bucket of the deployment. The bucket has one file for each source:
 
-- The deployment replaces a file in one step, for example by writing a temporary file and then renaming it. The service never uses a partial version.
+| Source             | File              | Tool                   | Markets |
+| ------------------ | ----------------- | ---------------------- | ------- |
+| Stock              | `Stock.csv`       | Device availability    | MY, PH  |
+| Trade-in reference | `Trade-in.csv`    | Sale or trade-in value | MY      |
+| Campaigns          | `promotions.yaml` | Promotions             | MY, PH  |
+
+The [`sample_data/`](sample_data/) folder has a full sample of each file. Sections 2 to 4 show excerpts and the columns or fields that each tool uses. Each source follows these rules:
+
+- An operator can upload a new version of a file at any time. The service uses the new version within 10 seconds. It needs no new deployment and no restart.
+- An upload replaces the file in one step. The service never uses a partial version.
 - The service loads each file at startup, and again after a restart. A missing or unusable file at startup is a failed initial load. It is an error and never appears as an empty result.
-- The service uses a changed file within 10 seconds.
 - When a changed file is missing or unusable, the service logs the problem and keeps the last loaded version, with no maximum stale age. A later valid file replaces it.
 - An empty source is valid data. Missing or unusable data is an operational failure, distinct from a genuine no-match result.
+- The service only reads the bucket. It never writes to it.
 - The health check shows the serving revision of each source, its age, and the most recent failure.
 
-The stock and trade-in files are exports of sheets that people curate. The service reads them as exported, with only generic cleanup: it ignores spaces and line breaks in column headers, and it reads filler values such as "N/A" and "Ask Store" as blank. The service has no mapping table for stores, plans, categories, or products. A new store, a new plan, or a new product group needs only a change in the data. It needs no change in the service code or configuration.
+The operators upload the files as the sheets and the campaign list export them, with no change. When the service loads a file, it transforms the file into the form that the tools use. The transformation is generic. It ignores spaces, line breaks, and a byte order mark in column headers. It reads filler values as blank, for example "N/A", "Ask Store", and a video link of "0". It ignores each column that sections 2 and 3 do not name. The service has no mapping table for stores, categories, or products. A new store, a new category, or a new product needs only a change in the data. It needs no change in the service code or configuration.
 
 ### MCP interface
 
@@ -46,7 +55,7 @@ Recognition:
 
 - The catalogue of each tool gives the categories, models, and specification values that matching knows. A new product group in the data is recognized with no code change.
 - A description is recognized when it names a category or a model of the catalogue, or when it gives an Apple model number such as "A2172".
-- The service has no alias table. The tool descriptions ask the agent to use full product names. A family word still matches through the catalogue models that contain it, for example "Galaxy" matches Samsung Galaxy S25.
+- The service has no alias table. The tool descriptions ask the agent to use full product names. A family word still matches through the catalogue models that contain it, for example "Galaxy" matches Samsung Galaxy S25 Ultra.
 - A description that names only a category searches the whole category, for example "iPhone". A product line is a model: "MacBook" matches MacBook Air and MacBook Pro, but not iMac.
 
 Specifications:
@@ -62,7 +71,8 @@ Specifications:
 
 Catalogue models:
 
-- The service reads the model of a catalogue row from its product title. It removes the row's own specification values and the words that the generic patterns recognize. For example, the title "iPhone 12 128GB Black Used" gives the model iPhone 12. The same rule applies to each product group.
+- The service reads the model of a stock row from its product title in the `Model` column. It removes the row's own values in the specification and `RAM` columns, and the words that the generic patterns recognize. For example, the title "Used iPhone 12 128GB Black" gives the model iPhone 12, and "Used MacBook Air 13" M2 2022 256GB 8GB" gives MacBook Air. The same rule applies to each category.
+- The trade-in reference gives the model of a row in its `Model` column, for example "IPHONE 12" or "SAMSUNG GALAXY Z FOLD 7".
 
 Models:
 
@@ -76,7 +86,7 @@ Models:
 All tools follow the same result pattern:
 
 - A result is a JSON object with one list, named after what it holds, for example `devices`, `promotions`, or `locations`. Each entry is a flat object with snake_case field names. A field that the source does not supply is left out.
-- A price, a value, or a fixed amount is text with the market currency and the amount as supplied, for example "RM 1500". A monthly quote ends with "/month".
+- A price, a value, or a fixed amount is text with the market currency and the amount as supplied, for example "RM 1029".
 - Names that come from the data, for example store names and plan names, appear as the data gives them.
 - A negative business outcome, for example no match or an unrecognized description, is a normal result with a short fixed sentence. Each outcome has its own sentence. All sentences use one consistent style: they state the outcome, and where useful, the next step for the agent.
 - A source failure or a location-service failure is an MCP error result. Its short message names the failed data or service. It gives no internal details.
@@ -105,7 +115,7 @@ All tools follow the same result pattern:
 - The logs and the health check contain no token, credentials, device descriptions, or locations.
 - A PH deployment exposes device availability, promotions, and location lookup only.
 - A PH deployment with no timezone setting uses UTC.
-- For each source, a missing or unusable file at startup reports a failure. A changed file is in use within 10 seconds. A changed file that is missing or unusable keeps the previous version, with no stale-age cutoff. A restart loads the file again.
+- For each source, a missing or unusable file at startup reports a failure. A new version that an operator uploads is in use within 10 seconds, with no new deployment and no restart. A changed file that is missing or unusable keeps the previous version, with no stale-age cutoff. A restart loads the file again.
 
 ## 2. Device availability
 
@@ -115,9 +125,9 @@ This tool helps the agent find a requested device, explain its availability and 
 
 The tool is `check_availability`. It accepts a device description (`model`), and optionally a promotion-only preference (`in_promo`), a budget range (`price_range`, two whole numbers with the lower first, for example "1000-2000"), and a price order (`sort_order`, `desc` or `asc`). When the request names no model, the search covers all eligible stock. A request that gives only a model number does not restrict stock by that number.
 
-A result lists at most ten `devices`. Each device shows its model, relevant specifications, condition, availability, and retail price (`retail_price`). It also shows each supplied promotion price (`promotion_price`), previous-month price (`last_month_price`), and plan price. Plan prices, for example bundle and payment-plan prices, are one object (`payment_plans`) keyed by the plan names from the stock file, for example `"Ansuran Mudah 12 months": "RM 96/month"`. A monthly quote is labelled as monthly and is not recalculated. A device includes checkout and video links (`checkout_link`, `video_link`) where the stock data supplies them. When a device has more than one video candidate, different calls can select different videos.
+A result lists at most ten `devices`. Each device shows its model, relevant specifications, condition, availability, and retail price (`retail_price`). It also shows each supplied promotion price (`promotion_price`), previous-month price (`last_month_price`), and XOX bundle price (`xox_bundle_price`). A device includes checkout and video links (`checkout_link`, `video_link`) where the stock data supplies them. When a device has two different video candidates, different calls can select different videos.
 
-A result includes only devices labelled Stock Present, Low Stock, or Out of Stock. It omits devices with any other stock status. Stores (`available_stores`) appear only for Stock Present and Low Stock devices. If such a device lists no branch, the result says "Online Only". Out of Stock devices show no stores.
+A device shows its availability as the stock data gives it. A result includes only devices labelled Stock Present, Low Stock, or No Stock. It omits devices with any other label. Stores (`available_stores`) appear only for Stock Present and Low Stock devices. If such a device lists no store, the result says "Online Only". No Stock devices show no stores.
 
 The tool has distinct outcomes for an unrecognized description and a recognized search with no matches. The unrecognized outcome names the categories of the catalogue. Each of these differs from the outcome for unavailable or unusable source data.
 
@@ -131,21 +141,34 @@ The search runs these steps in order:
 
 1. Exact preferences. Matches satisfy the model and the requested specifications. With promotion only, a match needs a supplied promotion price. An ordinary search includes devices with and without a promotion. Budget bounds are inclusive. The tool rejects budget bounds that are not increasing, nonnegative whole numbers, including decimal bounds. Budget filtering uses a whole-number promotion price, otherwise a whole-number retail price. It excludes a row when that selected price cannot be read as a whole number.
 2. Relaxation. If step 1 finds nothing, the search removes preferences in this order and stops when it finds results: condition, color, storage, size, chipset, connectivity, budget, promotion only. Before it removes the budget, it widens each end of the budget by 250, then by 250 again, and keeps the lower bound at zero or more. Category, model, generation, year, and material stay fixed in this step.
-3. Stock preference. When any matches are Stock Present or Low Stock, only those matches remain. When no match is Stock Present or Low Stock, also when steps 1 and 2 find nothing, the search tries the immediately newer model, then the immediately older one. It uses the same relaxation as step 2 and keeps only Stock Present and Low Stock matches. The next model has the next generation, year, or model number of the request, or of the first match when the request does not give one. For example, iPhone 13 comes after iPhone 12, and the iPad Pro 6th generation comes after the 5th generation. Newer takes precedence when both are available. If neither works, the original Out of Stock matches remain, or the result is the no-match outcome when there were none.
+3. Stock preference. When any matches are Stock Present or Low Stock, only those matches remain. When no match is Stock Present or Low Stock, also when steps 1 and 2 find nothing, the search tries the immediately newer model, then the immediately older one. It uses the same relaxation as step 2 and keeps only Stock Present and Low Stock matches. The next model has the next generation, year, or model number of the request, or of the first match when the request does not give one. For example, iPhone 13 comes after iPhone 12, and the iPad Pro 6th generation comes after the 5th generation. Newer takes precedence when both are available. If neither works, the original No Stock matches remain, or the result is the no-match outcome when there were none.
 4. Order and limit. The search excludes rows with an unusable retail price. It then sorts by the numeric promotion price where available, otherwise by the retail price. Decimal prices can determine the order. Highest price first is the default. Lowest price first is also supported, with available stock first and stable ties. The result has at most ten devices.
 
 A result identifies a newer or older model substitution (`model_substitution`). The adjustment report (`dropped_filters`) names the preference removal that first produced results, by its input or specification name, and also the budget relaxation when the search attempted it. It does not name earlier removals that produced nothing. When step 4 excludes every remaining row for an unusable retail price, the result is an empty device list. When steps 1 to 3 find nothing, the result is the no-match outcome.
 
 ### Stock data
 
-The stock file is the export of the stock sheet. Each row is one stock item. The file has a category column with the plain category name, for example iPhone, a product title column, the specification columns, a condition column, a quantity column, the price columns, the link columns, one column for each store, and one column for each plan price. `README.md` gives the column names.
+The stock file `Stock.csv` is the export of the stock sheet. Each row is one stock item. This excerpt shows the header and four rows of the sample:
 
-- A store column has a header that starts with "Store:". The rest of the header is the store name that results show. The column order is the display order. A new store is a new column.
-- A plan column has a header that starts with "Plan:", or with "Monthly plan:" for a monthly quote. The rest of the header is the plan name. A new plan is a new column.
-- A new product group is a new category name in the category column.
-- Stock that the file marks explicitly as new has new condition. All other condition entries mean used.
-- A quantity above 3 is Stock Present. A quantity of 0 is Out of Stock. Any other quantity, also a blank quantity, is Low Stock.
-- A store entry that is not 0 includes that store. This includes a blank entry. Results show the stores in display order.
+```csv
+Autocount SKU,Condition,Category,Retail Price,Promotion Price,Model,Total Stock,Low Yat Plaza,Low Yat Plaza 2,The Mines Shopping Mall,Wangsa Walk Mall,Paradigm Mall Petaling Jaya,AEON Bukit Tinggi,Giant Shah Alam,[KEDAH] City Plaza,[KEDAH] Aman Central,[KEDAH] Alor Star,[PERAK] Mydin Parit Buntar,[PENANG] Prangin Mall,[PENANG] Bukit Jambul,[PENANG] AEON BUKIT MERTAJAM,[JOHOR] GIANT PLENTUNG,[JOHOR] AEON Kulaijaya,[JOHOR] Paradigm Mall JB,[JOHOR] BATU PAHAT MALL,[KLT] Kota Bharu MALL,[KLT] AEON Kota Bharu ,[Sabah] Kubota,Warehouse,Online Only Stock,"Total Stock
+(Excld Sabah)",KLANG VALLEY TOTAL,Color,Chipset,Storage,RAM,Generation,Size,Case Material,Checkout Link,Video Link,Portrait Video,XOX Bundle Price,SpaylaterPrice,GrabpaylaterPrice,Last Month Price,No stock at all,Store Lookup,Ansuran Mudah Price 12 Month,Ansuran Mudah Price 24 Month,Ansuran Mudah Price 36 Month
+SKU-0044,USED,U_IPHONE,1029,839,Used iPhone 12 128GB Black,20,0,0,20,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,20,20,Black,,128GB,,,,,https://shop.example.com/checkout/cart?product_url=used-iphone-12-128gb-black,https://videos.example.com/sample-video-022.mp4,https://videos.example.com/sample-video-022.mp4,,47.62,210.12,1119,Stock Present,@The Mines Shopping Mall,,,
+SKU-0083,USED,U_IPHONE,1359,1179,Used iPhone 13 256GB Starlight,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,2,2,0,Starlight,,256GB,,,,,https://shop.example.com/checkout/cart?product_url=used-iphone-13-256gb-starlight,https://videos.example.com/sample-video-040.mp4,https://videos.example.com/sample-video-040.mp4,479,67.02,295.71,,Low Stock,,,,
+SKU-0034,USED,U_IPAD_WC,1329,,Used iPad Air 5th 64GB WiFi + Cellular,3,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,3,2,Ask Store,M1,64GB,,5th,"10.9""",,https://shop.example.com/checkout/cart?product_url=used-ipad-air-5th-64gb-wifi-cellular,https://videos.example.com/sample-video-018.mp4,0,,75.62,333.59,,Low Stock,"@The Mines Shopping Mall, @[JOHOR] AEON Kulaijaya",,,
+SKU-0221,USED,U_MAC,2499,,"Used MacBook Air 13"" M2 2022 256GB 8GB",0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,Ask Store,M2,256GB,8GB,,,,https://shop.example.com/checkout/cart?product_url=used-macbook-air-13-m2-2022-256gb-8gb,0,0,,141.77,625.44,,No Stock,,,,
+```
+
+The tool uses these columns:
+
+- `Category` is a category code, for example `N_IPHONE`, `U_IPHONE`, `U_IPAD`, or `U_IPAD_WC`. The category is the code without its condition prefix `N_` or `U_`, and without the suffix `_WC`. Thus `U_IPAD` and `U_IPAD_WC` are both the category IPAD. A new code, for example `U_HONOR`, is a new category.
+- `Model` is the product title. Section 1 tells how matching reads the catalogue model from it.
+- `Condition` is `NEW` for new condition. All other entries mean used.
+- `Color`, `Chipset`, `Storage`, `Generation`, `Size`, and `Case Material` are the color, chipset, storage, generation, size, and material specifications. `RAM` is the memory. It is not a specification.
+- `Retail Price`, `Promotion Price`, `Last Month Price`, and `XOX Bundle Price` are the prices.
+- `No stock at all` is the availability: `Stock Present`, `Low Stock`, or `No Stock`.
+- `Store Lookup` lists the stores that have the item, in display order. Each store name starts with "@", and a comma and a space separate the names. Results show the names without the "@". A blank entry lists no store. A new store needs no change in the service.
+- `Checkout Link` is the checkout link. `Video Link` and `Portrait Video` are the video candidates. Each of them is a candidate when it is available. Two equal links are one candidate.
 
 Stock follows the source data rules in section 1. An empty catalogue is valid.
 
@@ -160,13 +183,13 @@ Stock follows the source data rules in section 1. An empty catalogue is valid.
 - Budget bounds 1000.50, -1, or 2000 to 1000 are rejected.
 - A device with retail price 1999.50 and no promotion price appears and sorts by that price when the request has no budget. While a budget applies, budget filtering excludes it.
 - With promotion only, a device with no supplied promotion price is excluded. An ordinary search includes it.
-- When all matches are Out of Stock, the search tries the immediately newer model before the immediately older one, and the result identifies the substitution. When neither works, the original Out of Stock matches remain.
+- When all matches are No Stock, the search tries the immediately newer model before the immediately older one, and the result identifies the substitution. When neither works, the original No Stock matches remain.
 - When no device matches iPhone 16 and iPhone 17 is in stock, the result gives iPhone 17 as a newer substitution. When neither iPhone 17 nor iPhone 15 is in stock, the result is the no-match outcome.
 - Twelve matches return ten devices, highest price first by default and lowest price first on request.
-- A Stock Present device with no branch says "Online Only". An Out of Stock device shows no stores. A blank branch entry includes the branch and "0" excludes it.
-- Quantities 0, 2, 4, and 10 give Out of Stock, Low Stock, Stock Present, and Stock Present. A blank quantity gives Low Stock.
-- A new store column appears in results under its header name, in column order, with no code change. A new plan column appears in `payment_plans` under its header name, with no code change. A new category in the stock file can be searched with no code change.
-- A supplied monthly quote appears labelled as monthly, with its supplied value. Supplied checkout and video links appear. "N/A" and "Ask Store" in the file show as no value.
+- `Store Lookup` "@The Mines Shopping Mall, @[JOHOR] AEON Kulaijaya" gives the stores The Mines Shopping Mall and [JOHOR] AEON Kulaijaya, in that order. A Low Stock device with a blank `Store Lookup`, for example Used iPhone 13 256GB Starlight, says "Online Only". A No Stock device, for example Used MacBook Air 13" M2 2022 256GB 8GB, shows no stores.
+- The labels Stock Present, Low Stock, and No Stock appear as the stock data gives them. A row with another label does not appear.
+- A new store in `Store Lookup` appears in results with no code change. A new category code, for example `U_HONOR`, can be searched as HONOR with no code change. "iPad" searches the rows of both `U_IPAD` and `U_IPAD_WC`.
+- The supplied checkout link, video link, and XOX bundle price appear. A device with the same link in `Video Link` and `Portrait Video` gives that link. "N/A" and "Ask Store" in the file, and a video link of "0", show as no value.
 - These outcomes stay distinct: unrecognized description, no match, empty list after price exclusion, and source failure. A description of a category that the catalogue does not have gives the unrecognized outcome, which names the categories of the catalogue. An unusable changed file keeps the previous version. A failed initial load never appears as no stock.
 
 ## 3. Sale or trade-in value
@@ -191,13 +214,32 @@ Color and condition do not change the value. A used or refurbished description c
 
 ### Reference data and failures
 
-The trade-in reference file is the export of the trade-in sheet. Each row is one variant of the market, with the plain category name, the model, the model numbers, the specifications, the year, and the value. `README.md` gives the column names. A new category is a new category name in the file. The reference follows the source data rules in section 1.
+The trade-in reference file `Trade-in.csv` is the export of the trade-in sheet. Each row is one variant of the market. This excerpt shows the header and five rows of the sample:
+
+```csv
+Category,Model,Generation,ModelNumber,Size,Storage,Year,Chipset,Material,Battery,LCD,RRP,Connectivity,MinorScratch,MinorDent,TradeinPrice
+Mac,MacBook Air,,,"13""",256GB,2022,M2,,,,,,,,1535
+iPad,iPad Air,5th,A2588,"10.9""",64GB,2022,M1,,,,,WiFi,,,720
+iPhone,IPHONE 12,,A2172/A2402/A2404/A2403,,64GB,2020,,,-100,-270,,,,,450
+iPhone,IPHONE 12,,A2172/A2402/A2404/A2403,,128GB,2020,,,-90,-260,,,,,490
+Samsung,SAMSUNG GALAXY Z FOLD 7,,,,256GB,2025,,,,-1770,,,,,2440
+```
+
+The tool uses these columns:
+
+- `Category` is the plain category name, for example iPhone or Mac. A new category is a new name.
+- `Model` is the model. Its capitalization can change from row to row, for example "MacBook Pro" and "Macbook Pro".
+- `ModelNumber` lists the Apple model numbers of the variant, separated by "/".
+- `Generation`, `Size`, `Storage`, `Year`, `Chipset`, `Material`, and `Connectivity` are the specifications.
+- `TradeinPrice` is the value.
+
+The deduction columns `Battery` and `LCD` do not change the value. The reference follows the source data rules in section 1.
 
 ### Acceptance cases
 
 - An MY deployment exposes the tool. A PH deployment does not expose it and does not permit a call to it.
-- Query "A2172" matches a row whose model-number text is "A2172, A2402". When a model number occurs in two rows, both variants return, even when the request also names other specifications.
-- A request for 128GB storage with only 256GB rows gives the no-match outcome, not a 256GB variant or a neighboring model.
+- Query "A2172" matches the rows whose `ModelNumber` is "A2172/A2402/A2404/A2403". When a model number occurs in several rows, all of those variants return, even when the request also names other specifications. For example, "A2172 128GB" returns the 64GB, 128GB, and 256GB IPHONE 12 variants.
+- "iPhone 17 Pro 128GB" gives the no-match outcome when the reference has only 256GB, 512GB, and 1TB IPHONE 17 PRO rows. It does not give another variant or a neighboring model.
 - A blank specification cell matches any requested value of that specification.
 - Ten matches return all ten. Eleven matches return a request for a narrower query. A variant from 2021 comes before a variant from 2019, and a variant with no year comes last.
 - "Black iPhone 12", "used iPhone 12 with a cracked screen", and "iPhone 12" give the same value for the same variant.
@@ -222,9 +264,44 @@ Without a model, the result includes model-restricted campaigns and shows their 
 
 ### Campaign data and failures
 
-The campaign file lists the campaigns. A campaign contains the offer, voucher, fixed or percentage discount, minimum spend, optional dates, eligible models, priority, and combination rules.
+The campaign file `promotions.yaml` is a YAML list of campaigns. This excerpt shows two campaigns of the sample. The first campaign has more eligible models in the sample:
 
-Campaigns follow the source data rules in section 1. A valid empty campaign file or list means no offers. The tool never presents missing or invalid campaigns as no promotions or as a free offer.
+```yaml
+- name: ✨SAMPLE MEGA SALE
+  description: Get RM200 off with our SAMPLE MEGA voucher for eligible models below.
+  voucher_code: SAMPLE200
+  discount_type: fixed
+  discount_value: 200
+  min_spend: 0
+  start_date: 2025-12-11
+  end_date: 2026-10-31
+  stackable: false
+  eligible_models:
+  - iPhone 13
+  - iPhone 13 128GB
+  - iPhone 13 Pro
+  priority: 0
+- name: 🔥Sample Samsung Sales
+  description: Get RM300 off Used Samsung Galaxy S25 Ultra 256GB with voucher SAMPLESSG300.
+  voucher_code: SAMPLESSG300
+  discount_type: fixed
+  discount_value: 300
+  min_spend: 0
+  start_date: 2026-10-01
+  end_date: 2026-10-31
+  stackable: false
+  eligible_models:
+  - Used Samsung Galaxy S25 Ultra 256GB
+  priority: 0
+```
+
+- `discount_type` is `fixed` or `percentage`. `discount_value` is the amount or the percentage.
+- `stackable: false` means that the offer cannot be combined.
+- `start_date` and `end_date` are optional.
+- A campaign with no `eligible_models` applies to all models.
+- An eligible model can name a condition and a storage, for example "Used Samsung Galaxy S25 Ultra 256GB". A request matches it when the request names the model and names no different condition or storage.
+
+Campaigns follow the source data rules in section 1. A valid empty campaign file or an empty list means no offers. The tool never presents missing or invalid campaigns as no promotions or as a free offer.
 
 ### Acceptance cases
 
@@ -232,7 +309,7 @@ Campaigns follow the source data rules in section 1. A valid empty campaign file
 - An omitted amount is evaluated as 9999, and the result does not claim eligibility at the customer's actual spend.
 - An offer that runs from 1 March to 31 March appears for 1 March and 31 March, but not for 1 April. The result shows both dates.
 - An omitted date uses today in the configured timezone, or in UTC when none is configured. A change of market alone does not change the timezone.
-- A base model request does not qualify for an offer restricted to the Pro model of the same number. A request for one numbered model does not qualify for an offer restricted to a different number. A request with extra words, such as storage and color, qualifies for an offer on its model.
+- A base model request does not qualify for an offer restricted to the Pro model of the same number. A request for one numbered model does not qualify for an offer restricted to a different number. A request with extra words, such as storage and color, qualifies for an offer on its model. "iPhone Air 1TB" qualifies for an offer on "New iPhone Air 1TB". "Used iPhone Air 1TB" and "iPhone Air 512GB" do not qualify for it.
 - A request without a model includes model-restricted offers and shows their restrictions.
 - Offers that cannot be combined come first, then priority 1 before priority 2, then higher savings. For amount 2000, a 10% offer saves 250 and comes before a fixed 200 offer with the same combination rule and priority.
 - Two applicable offers that cannot be combined both appear, and the result does not present them as combinable.

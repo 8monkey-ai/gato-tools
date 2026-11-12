@@ -1,0 +1,634 @@
+Category,Model,Generation,ModelNumber,Size,Storage,Year,Chipset,Material,Battery,LCD,RRP,Connectivity,MinorScratch,MinorDent,TradeinPrice
+Mac,MacBook Air,,,"13""",128GB,2019,Intel Core i5 1.6GHz,,,,,,,,405
+Mac,MacBook Air,,,"13""",256GB,2019,Intel Core i5 1.6GHz,,,,,,,,385
+Mac,MacBook Air,,,"13""",512GB,2019,Intel Core i5 1.6GHz,,,,,,,,450
+Mac,MacBook Air,,,"13""",1TB,2019,Intel Core i5 1.6GHz,,,,,,,,455
+Mac,MacBook Air,,,"13""",256GB,2020,Intel Core i3 1.1GHz,,,,,,,,335
+Mac,MacBook Air,,,"13""",512GB,2020,Intel Core i3 1.1GHz,,,,,,,,355
+Mac,MacBook Air,,,"13""",1TB,2020,Intel Core i3 1.1GHz,,,,,,,,355
+Mac,MacBook Air,,,"13""",2TB,2020,Intel Core i3 1.1GHz,,,,,,,,415
+Mac,MacBook Air,,,"13""",256GB,2020,Intel Core i5 1.1GHz,,,,,,,,425
+Mac,MacBook Air,,,"13""",512GB,2020,Intel Core i5 1.1GHz,,,,,,,,470
+Mac,MacBook Air,,,"13""",1TB,2020,Intel Core i5 1.1GHz,,,,,,,,450
+Mac,MacBook Air,,,"13""",2TB,2020,Intel Core i5 1.1GHz,,,,,,,,480
+Mac,MacBook Air,,,"13""",256GB,2020,Intel Core i7 1.2GHz,,,,,,,,450
+Mac,MacBook Air,,,"13""",512GB,2020,Intel Core i7 1.2GHz,,,,,,,,440
+Mac,MacBook Air,,,"13""",1TB,2020,Intel Core i7 1.2GHz,,,,,,,,460
+Mac,MacBook Air,,,"13""",2TB,2020,Intel Core i7 1.2GHz,,,,,,,,545
+Mac,MacBook Air,,,"13""",128GB,2020,M1,,,,,,,,970
+Mac,MacBook Air,,,"13""",256GB,2020,M1,,,,,,,,1015
+Mac,MacBook Air,,,"13""",512GB,2020,M1,,,,,,,,1195
+Mac,MacBook Air,,,"13""",1TB,2020,M1,,,,,,,,1540
+Mac,MacBook Air,,,"13""",2TB,2020,M1,,,,,,,,1595
+Mac,MacBook Air,,,"13""",256GB,2020,M1,,,,,,,,1055
+Mac,MacBook Air,,,"13""",512GB,2020,M1,,,,,,,,1215
+Mac,MacBook Air,,,"13""",1TB,2020,M1,,,,,,,,1585
+Mac,MacBook Air,,,"13""",2TB,2020,M1,,,,,,,,1570
+Mac,MacBook Air,,,"13""",256GB,2022,M2,,,,,,,,1535
+Mac,MacBook Air,,,"13""",512GB,2022,M2,,,,,,,,1555
+Mac,MacBook Air,,,"13""",1TB,2022,M2,,,,,,,,2030
+Mac,MacBook Air,,,"13""",2TB,2022,M2,,,,,,,,2480
+Mac,MacBook Air,,,"13""",256GB,2022,M2,,,,,,,,1440
+Mac,MacBook Air,,,"13""",512GB,2022,M2,,,,,,,,1610
+Mac,MacBook Air,,,"13""",1TB,2022,M2,,,,,,,,2005
+Mac,MacBook Air,,,"13""",2TB,2022,M2,,,,,,,,2305
+Mac,MacBook Air,,,"15""",256GB,2023,M2,,,,,,,,1695
+Mac,MacBook Air,,,"15""",512GB,2023,M2,,,,,,,,1890
+Mac,MacBook Air,,,"15""",1TB,2023,M2,,,,,,,,2165
+Mac,MacBook Air,,,"15""",2TB,2023,M2,,,,,,,,2455
+Mac,MacBook Air,,,"13""",256GB,2024,M3,,,,,,,,1735
+Mac,MacBook Air,,,"13""",256GB,2024,M3,,,,,,,,1860
+Mac,MacBook Air,,,"13""",512GB,2024,M3,,,,,,,,1885
+Mac,MacBook Air,,,"13""",1TB,2024,M3,,,,,,,,2230
+Mac,MacBook Air,,,"13""",2TB,2024,M3,,,,,,,,2610
+Mac,MacBook Air,,,"15""",256GB,2024,M3,,,,,,,,2090
+Mac,MacBook Air,,,"15""",512GB,2024,M3,,,,,,,,2225
+Mac,MacBook Air,,,"15""",1TB,2024,M3,,,,,,,,2765
+Mac,MacBook Air,,,"15""",2TB,2024,M3,,,,,,,,3030
+Mac,MacBook Air,,,"13""",256GB,2025,M4,,,,,,,,2025
+Mac,MacBook Air,,,"13""",256GB,2025,M4,,,,,,,,2250
+Mac,MacBook Air,,,"13""",512GB,2025,M4,,,,,,,,2545
+Mac,MacBook Air,,,"13""",1TB,2025,M4,,,,,,,,2660
+Mac,MacBook Air,,,"13""",2TB,2025,M4,,,,,,,,3470
+Mac,MacBook Air,,,"15""",256GB,2025,M4,,,,,,,,2585
+Mac,MacBook Air,,,"15""",512GB,2025,M4,,,,,,,,2705
+Mac,MacBook Air,,,"15""",1TB,2025,M4,,,,,,,,3290
+Mac,MacBook Air,,,"15""",2TB,2025,M4,,,,,,,,4125
+Mac,MacBook Pro,,,"13""",128GB,2019,Intel Core i5 1.4GHz,,,,,,,,390
+Mac,MacBook Pro,,,"13""",256GB,2019,Intel Core i5 1.4GHz,,,,,,,,465
+Mac,MacBook Pro,,,"13""",512GB,2019,Intel Core i5 1.4GHz,,,,,,,,500
+Mac,MacBook Pro,,,"13""",1TB,2019,Intel Core i5 1.4GHz,,,,,,,,575
+Mac,MacBook Pro,,,"13""",2TB,2019,Intel Core i5 1.4GHz,,,,,,,,575
+Mac,MacBook Pro,,,"13""",256GB,2019,Intel Core i5 2.4GHz,,,,,,,,560
+Mac,MacBook Pro,,,"13""",512GB,2019,Intel Core i5 2.4GHz,,,,,,,,625
+Mac,MacBook Pro,,,"13""",1TB,2019,Intel Core i5 2.4GHz,,,,,,,,640
+Mac,MacBook Pro,,,"13""",2TB,2019,Intel Core i5 2.4GHz,,,,,,,,675
+Mac,MacBook Pro,,,"13""",128GB,2019,Intel Core i7 1.7GHz,,,,,,,,445
+Mac,MacBook Pro,,,"13""",256GB,2019,Intel Core i7 1.7GHz,,,,,,,,450
+Mac,MacBook Pro,,,"13""",512GB,2019,Intel Core i7 1.7GHz,,,,,,,,550
+Mac,MacBook Pro,,,"13""",1TB,2019,Intel Core i7 1.7GHz,,,,,,,,580
+Mac,MacBook Pro,,,"13""",2TB,2019,Intel Core i7 1.7GHz,,,,,,,,630
+Mac,MacBook Pro,,,"15""",256GB,2019,Intel Core i7 2.6GHz,,,,,,,,845
+Mac,MacBook Pro,,,"15""",512GB,2019,Intel Core i7 2.6GHz,,,,,,,,910
+Mac,MacBook Pro,,,"15""",1TB,2019,Intel Core i7 2.6GHz,,,,,,,,1030
+Mac,MacBook Pro,,,"15""",2TB,2019,Intel Core i7 2.6GHz,,,,,,,,1105
+Mac,MacBook Pro,,,"15""",4TB,2019,Intel Core i7 2.6GHz,,,,,,,,1195
+Mac,MacBook Pro,,,"13""",256GB,2019,Intel Core i7 2.8GHz,,,,,,,,620
+Mac,MacBook Pro,,,"13""",512GB,2019,Intel Core i7 2.8GHz,,,,,,,,630
+Mac,MacBook Pro,,,"13""",1TB,2019,Intel Core i7 2.8GHz,,,,,,,,640
+Mac,MacBook Pro,,,"13""",2TB,2019,Intel Core i7 2.8GHz,,,,,,,,720
+Mac,MacBook Pro,,,"15""",256GB,2019,Intel Core i9 2.3GHz,,,,,,,,860
+Mac,MacBook Pro,,,"15""",512GB,2019,Intel Core i9 2.3GHz,,,,,,,,1000
+Mac,MacBook Pro,,,"15""",1TB,2019,Intel Core i9 2.3GHz,,,,,,,,1155
+Mac,MacBook Pro,,,"15""",2TB,2019,Intel Core i9 2.3GHz,,,,,,,,1200
+Mac,MacBook Pro,,,"15""",4TB,2019,Intel Core i9 2.3GHz,,,,,,,,1305
+Mac,MacBook Pro,,,"15""",256GB,2019,Intel Core i9 2.4GHz,,,,,,,,860
+Mac,MacBook Pro,,,"15""",512GB,2019,Intel Core i9 2.4GHz,,,,,,,,1005
+Mac,MacBook Pro,,,"15""",1TB,2019,Intel Core i9 2.4GHz,,,,,,,,1090
+Mac,MacBook Pro,,,"15""",2TB,2019,Intel Core i9 2.4GHz,,,,,,,,1285
+Mac,MacBook Pro,,,"15""",4TB,2019,Intel Core i9 2.4GHz,,,,,,,,1370
+Mac,MacBook Pro,,,"16""",512GB,2019,Intel Core i7 2.6GHz,,,,,,,,925
+Mac,MacBook Pro,,,"16""",1TB,2019,Intel Core i7 2.6GHz,,,,,,,,1000
+Mac,MacBook Pro,,,"16""",2TB,2019,Intel Core i7 2.6GHz,,,,,,,,1130
+Mac,MacBook Pro,,,"16""",4TB,2019,Intel Core i7 2.6GHz,,,,,,,,1190
+Mac,MacBook Pro,,,"16""",8TB,2019,Intel Core i7 2.6GHz,,,,,,,,1300
+Mac,MacBook Pro,,,"16""",1TB,2019,Intel Core i9 2.3GHz,,,,,,,,1170
+Mac,MacBook Pro,,,"16""",2TB,2019,Intel Core i9 2.3GHz,,,,,,,,1180
+Mac,MacBook Pro,,,"16""",4TB,2019,Intel Core i9 2.3GHz,,,,,,,,1415
+Mac,MacBook Pro,,,"16""",8TB,2019,Intel Core i9 2.3GHz,,,,,,,,1350
+Mac,MacBook Pro,,,"16""",512GB,2019,Intel Core i9 2.4GHz,,,,,,,,1070
+Mac,MacBook Pro,,,"16""",1TB,2019,Intel Core i9 2.4GHz,,,,,,,,1325
+Mac,MacBook Pro,,,"16""",2TB,2019,Intel Core i9 2.4GHz,,,,,,,,1285
+Mac,MacBook Pro,,,"16""",4TB,2019,Intel Core i9 2.4GHz,,,,,,,,1420
+Mac,MacBook Pro,,,"16""",8TB,2019,Intel Core i9 2.4GHz,,,,,,,,1425
+Mac,MacBook Pro,,,"13""",256GB,2020,Intel Core i5 1.4GHz,,,,,,,,590
+Mac,MacBook Pro,,,"13""",512GB,2020,Intel Core i5 1.4GHz,,,,,,,,620
+Mac,MacBook Pro,,,"13""",1TB,2020,Intel Core i5 1.4GHz,,,,,,,,615
+Mac,MacBook Pro,,,"13""",2TB,2020,Intel Core i5 1.4GHz,,,,,,,,630
+Mac,MacBook Pro,,,"13""",512GB,2020,Intel Core i5 2.0GHz,,,,,,,,620
+Mac,MacBook Pro,,,"13""",1TB,2020,Intel Core i5 2.0GHz,,,,,,,,680
+Mac,MacBook Pro,,,"13""",2TB,2020,Intel Core i5 2.0GHz,,,,,,,,805
+Mac,MacBook Pro,,,"13""",4TB,2020,Intel Core i5 2.0GHz,,,,,,,,915
+Mac,MacBook Pro,,,"13""",256GB,2020,Intel Core i7 1.7GHz,,,,,,,,695
+Mac,MacBook Pro,,,"13""",512GB,2020,Intel Core i7 1.7GHz,,,,,,,,690
+Mac,MacBook Pro,,,"13""",1TB,2020,Intel Core i7 1.7GHz,,,,,,,,695
+Mac,MacBook Pro,,,"13""",2TB,2020,Intel Core i7 1.7GHz,,,,,,,,780
+Mac,MacBook Pro,,,"13""",512GB,2020,Intel Core i7 2.3GHz,,,,,,,,660
+Mac,MacBook Pro,,,"13""",1TB,2020,Intel Core i7 2.3GHz,,,,,,,,735
+Mac,MacBook Pro,,,"13""",2TB,2020,Intel Core i7 2.3GHz,,,,,,,,805
+Mac,MacBook Pro,,,"13""",4TB,2020,Intel Core i7 2.3GHz,,,,,,,,955
+Mac,MacBook Pro,,,"13""",256GB,2020,M1,,,,,,,,785
+Mac,MacBook Pro,,,"13""",512GB,2020,M1,,,,,,,,870
+Mac,MacBook Pro,,,"13""",1TB,2020,M1,,,,,,,,915
+Mac,MacBook Pro,,,"13""",2TB,2020,M1,,,,,,,,1070
+Mac,Macbook Pro,,,"14""",512GB,2021,M1 Pro,,,,,,,,1700
+Mac,Macbook Pro,,,"14""",1TB,2021,M1 Pro,,,,,,,,1900
+Mac,Macbook Pro,,,"14""",2TB,2021,M1 Pro,,,,,,,,1745
+Mac,Macbook Pro,,,"14""",4TB,2021,M1 Pro,,,,,,,,2345
+Mac,Macbook Pro,,,"14""",8TB,2021,M1 Pro,,,,,,,,2835
+Mac,Macbook Pro,,,"14""",512GB,2021,M1 Pro,,,,,,,,1710
+Mac,Macbook Pro,,,"14""",1TB,2021,M1 Pro,,,,,,,,2015
+Mac,Macbook Pro,,,"14""",2TB,2021,M1 Pro,,,,,,,,2050
+Mac,Macbook Pro,,,"14""",4TB,2021,M1 Pro,,,,,,,,2445
+Mac,Macbook Pro,,,"14""",8TB,2021,M1 Pro,,,,,,,,3225
+Mac,Macbook Pro,,,"14""",512GB,2021,M1 Pro,,,,,,,,1775
+Mac,Macbook Pro,,,"14""",1TB,2021,M1 Pro,,,,,,,,2055
+Mac,Macbook Pro,,,"14""",2TB,2021,M1 Pro,,,,,,,,2215
+Mac,Macbook Pro,,,"14""",4TB,2021,M1 Pro,,,,,,,,2625
+Mac,Macbook Pro,,,"14""",8TB,2021,M1 Pro,,,,,,,,3150
+Mac,Macbook Pro,,,"14""",512GB,2021,M1 Max,,,,,,,,2220
+Mac,Macbook Pro,,,"14""",1TB,2021,M1 Max,,,,,,,,2495
+Mac,Macbook Pro,,,"14""",2TB,2021,M1 Max,,,,,,,,2430
+Mac,Macbook Pro,,,"14""",4TB,2021,M1 Max,,,,,,,,2960
+Mac,Macbook Pro,,,"14""",8TB,2021,M1 Max,,,,,,,,3960
+Mac,Macbook Pro,,,"14""",512GB,2021,M1 Max,,,,,,,,2535
+Mac,Macbook Pro,,,"14""",1TB,2021,M1 Max,,,,,,,,2585
+Mac,Macbook Pro,,,"14""",2TB,2021,M1 Max,,,,,,,,2875
+Mac,Macbook Pro,,,"14""",4TB,2021,M1 Max,,,,,,,,3130
+Mac,Macbook Pro,,,"14""",8TB,2021,M1 Max,,,,,,,,3930
+Mac,Macbook Pro,,,"16""",512GB,2021,M1 Pro,,,,,,,,1900
+Mac,Macbook Pro,,,"16""",1TB,2021,M1 Pro,,,,,,,,2005
+Mac,Macbook Pro,,,"16""",2TB,2021,M1 Pro,,,,,,,,2285
+Mac,Macbook Pro,,,"16""",4TB,2021,M1 Pro,,,,,,,,2655
+Mac,Macbook Pro,,,"16""",8TB,2021,M1 Pro,,,,,,,,3305
+Mac,Macbook Pro,,,"16""",512GB,2021,M1 Max,,,,,,,,2460
+Mac,Macbook Pro,,,"16""",1TB,2021,M1 Max,,,,,,,,2535
+Mac,Macbook Pro,,,"16""",2TB,2021,M1 Max,,,,,,,,2715
+Mac,Macbook Pro,,,"16""",4TB,2021,M1 Max,,,,,,,,3175
+Mac,Macbook Pro,,,"16""",8TB,2021,M1 Max,,,,,,,,3560
+Mac,Macbook Pro,,,"16""",512GB,2021,M1 Max,,,,,,,,2540
+Mac,Macbook Pro,,,"16""",1TB,2021,M1 Max,,,,,,,,2750
+Mac,Macbook Pro,,,"16""",2TB,2021,M1 Max,,,,,,,,2955
+Mac,Macbook Pro,,,"16""",4TB,2021,M1 Max,,,,,,,,3515
+Mac,Macbook Pro,,,"16""",8TB,2021,M1 Max,,,,,,,,4150
+Mac,MacBook Pro,,,"13""",256GB,2022,M2,,,,,,,,1295
+Mac,MacBook Pro,,,"13""",512GB,2022,M2,,,,,,,,1550
+Mac,MacBook Pro,,,"13""",1TB,2022,M2,,,,,,,,1610
+Mac,MacBook Pro,,,"13""",2TB,2022,M2,,,,,,,,1955
+Mac,MacBook Pro,,,"14""",512GB,2023,M2 Pro,,,,,,,,2290
+Mac,MacBook Pro,,,"14""",1TB,2023,M2 Pro,,,,,,,,2440
+Mac,MacBook Pro,,,"14""",2TB,2023,M2 Pro,,,,,,,,2570
+Mac,MacBook Pro,,,"14""",4TB,2023,M2 Pro,,,,,,,,3025
+Mac,MacBook Pro,,,"14""",8TB,2023,M2 Pro,,,,,,,,3805
+Mac,MacBook Pro,,,"14""",512GB,2023,M2 Pro,,,,,,,,2240
+Mac,MacBook Pro,,,"14""",1TB,2023,M2 Pro,,,,,,,,2245
+Mac,MacBook Pro,,,"14""",2TB,2023,M2 Pro,,,,,,,,2965
+Mac,MacBook Pro,,,"14""",4TB,2023,M2 Pro,,,,,,,,3320
+Mac,MacBook Pro,,,"14""",8TB,2023,M2 Pro,,,,,,,,4380
+Mac,MacBook Pro,,,"14""",512GB,2023,M2 Max,,,,,,,,2815
+Mac,MacBook Pro,,,"14""",1TB,2023,M2 Max,,,,,,,,2615
+Mac,MacBook Pro,,,"14""",2TB,2023,M2 Max,,,,,,,,3510
+Mac,MacBook Pro,,,"14""",4TB,2023,M2 Max,,,,,,,,4120
+Mac,MacBook Pro,,,"14""",8TB,2023,M2 Max,,,,,,,,5110
+Mac,MacBook Pro,,,"14""",512GB,2023,M2 Max,,,,,,,,3100
+Mac,MacBook Pro,,,"14""",1TB,2023,M2 Max,,,,,,,,3240
+Mac,MacBook Pro,,,"14""",2TB,2023,M2 Max,,,,,,,,3515
+Mac,MacBook Pro,,,"14""",4TB,2023,M2 Max,,,,,,,,4475
+Mac,MacBook Pro,,,"14""",8TB,2023,M2 Max,,,,,,,,5170
+Mac,MacBook Pro,,,"16""",512GB,2023,M2 Pro,,,,,,,,2545
+Mac,MacBook Pro,,,"16""",1TB,2023,M2 Pro,,,,,,,,2890
+Mac,MacBook Pro,,,"16""",2TB,2023,M2 Pro,,,,,,,,3245
+Mac,MacBook Pro,,,"16""",4TB,2023,M2 Pro,,,,,,,,3655
+Mac,MacBook Pro,,,"16""",8TB,2023,M2 Pro,,,,,,,,4815
+Mac,MacBook Pro,,,"16""",512GB,2023,M2 Max,,,,,,,,3165
+Mac,MacBook Pro,,,"16""",1TB,2023,M2 Max,,,,,,,,3495
+Mac,MacBook Pro,,,"16""",2TB,2023,M2 Max,,,,,,,,3665
+Mac,MacBook Pro,,,"16""",4TB,2023,M2 Max,,,,,,,,4440
+Mac,MacBook Pro,,,"16""",8TB,2023,M2 Max,,,,,,,,5140
+Mac,MacBook Pro,,,"16""",512GB,2023,M2 Max,,,,,,,,3375
+Mac,MacBook Pro,,,"16""",1TB,2023,M2 Max,,,,,,,,3385
+Mac,MacBook Pro,,,"16""",2TB,2023,M2 Max,,,,,,,,3890
+Mac,MacBook Pro,,,"16""",4TB,2023,M2 Max,,,,,,,,4210
+Mac,MacBook Pro,,,"16""",8TB,2023,M2 Max,,,,,,,,5265
+Mac,MacBook Pro,,,"14""",512GB,2023,M3,,,,,,,,2150
+Mac,MacBook Pro,,,"14""",1TB,2023,M3,,,,,,,,2665
+Mac,MacBook Pro,,,"14""",2TB,2023,M3,,,,,,,,3050
+Mac,MacBook Pro,,,"14""",512GB,2023,M3 Pro,,,,,,,,2800
+Mac,MacBook Pro,,,"14""",1TB,2023,M3 Pro,,,,,,,,2985
+Mac,MacBook Pro,,,"14""",2TB,2023,M3 Pro,,,,,,,,3720
+Mac,MacBook Pro,,,"14""",4TB,2023,M3 Pro,,,,,,,,4275
+Mac,MacBook Pro,,,"14""",512GB,2023,M3 Pro,,,,,,,,2910
+Mac,MacBook Pro,,,"14""",1TB,2023,M3 Pro,,,,,,,,3195
+Mac,MacBook Pro,,,"14""",2TB,2023,M3 Pro,,,,,,,,3585
+Mac,MacBook Pro,,,"14""",4TB,2023,M3 Pro,,,,,,,,4230
+Mac,MacBook Pro,,,"14""",512GB,2023,M3 Max,,,,,,,,4225
+Mac,MacBook Pro,,,"14""",1TB,2023,M3 Max,,,,,,,,4585
+Mac,MacBook Pro,,,"14""",2TB,2023,M3 Max,,,,,,,,4860
+Mac,MacBook Pro,,,"14""",4TB,2023,M3 Max,,,,,,,,5835
+Mac,MacBook Pro,,,"14""",8TB,2023,M3 Max,,,,,,,,6495
+Mac,MacBook Pro,,,"14""",512GB,2023,M3 Max,,,,,,,,4505
+Mac,MacBook Pro,,,"14""",1TB,2023,M3 Max,,,,,,,,5075
+Mac,MacBook Pro,,,"14""",2TB,2023,M3 Max,,,,,,,,5325
+Mac,MacBook Pro,,,"14""",4TB,2023,M3 Max,,,,,,,,6620
+Mac,MacBook Pro,,,"14""",8TB,2023,M3 Max,,,,,,,,7550
+Mac,MacBook Pro,,,"16""",512GB,2023,M3 Pro,,,,,,,,3660
+Mac,MacBook Pro,,,"16""",1TB,2023,M3 Pro,,,,,,,,3775
+Mac,MacBook Pro,,,"16""",2TB,2023,M3 Pro,,,,,,,,4390
+Mac,MacBook Pro,,,"16""",4TB,2023,M3 Pro,,,,,,,,5655
+Mac,MacBook Pro,,,"16""",512GB,2023,M3 Max,,,,,,,,4675
+Mac,MacBook Pro,,,"16""",1TB,2023,M3 Max,,,,,,,,4865
+Mac,MacBook Pro,,,"16""",2TB,2023,M3 Max,,,,,,,,5555
+Mac,MacBook Pro,,,"16""",4TB,2023,M3 Max,,,,,,,,6245
+Mac,MacBook Pro,,,"16""",8TB,2023,M3 Max,,,,,,,,8295
+Mac,MacBook Pro,,,"16""",512GB,2023,M3 Max,,,,,,,,5700
+Mac,MacBook Pro,,,"16""",1TB,2023,M3 Max,,,,,,,,6070
+Mac,MacBook Pro,,,"16""",2TB,2023,M3 Max,,,,,,,,6295
+Mac,MacBook Pro,,,"16""",4TB,2023,M3 Max,,,,,,,,7270
+Mac,MacBook Pro,,,"16""",8TB,2023,M3 Max,,,,,,,,8735
+Mac,MacBook Pro,,,"14""",512GB,2024,M4,,,,,,,,2755
+Mac,MacBook Pro,,,"14""",1TB,2024,M4,,,,,,,,2835
+Mac,MacBook Pro,,,"14""",2TB,2024,M4,,,,,,,,3890
+Mac,MacBook Pro,,,"14""",512GB,2024,M4 Pro,,,,,,,,3110
+Mac,MacBook Pro,,,"14""",1TB,2024,M4 Pro,,,,,,,,3630
+Mac,MacBook Pro,,,"14""",2TB,2024,M4 Pro,,,,,,,,4340
+Mac,MacBook Pro,,,"14""",4TB,2024,M4 Pro,,,,,,,,4325
+Mac,MacBook Pro,,,"14""",512GB,2024,M4 Pro,,,,,,,,3875
+Mac,MacBook Pro,,,"14""",1TB,2024,M4 Pro,,,,,,,,3735
+Mac,MacBook Pro,,,"14""",2TB,2024,M4 Pro,,,,,,,,4305
+Mac,MacBook Pro,,,"14""",4TB,2024,M4 Pro,,,,,,,,5005
+Mac,MacBook Pro,,,"14""",1TB,2024,M4 Max,,,,,,,,4935
+Mac,MacBook Pro,,,"14""",2TB,2024,M4 Max,,,,,,,,6035
+Mac,MacBook Pro,,,"14""",4TB,2024,M4 Max,,,,,,,,6330
+Mac,MacBook Pro,,,"14""",8TB,2024,M4 Max,,,,,,,,7460
+Mac,MacBook Pro,,,"16""",512GB,2024,M4 Pro,,,,,,,,4135
+Mac,MacBook Pro,,,"16""",1TB,2024,M4 Pro,,,,,,,,4185
+Mac,MacBook Pro,,,"16""",2TB,2024,M4 Pro,,,,,,,,4715
+Mac,MacBook Pro,,,"16""",4TB,2024,M4 Pro,,,,,,,,5445
+Mac,MacBook Pro,,,"16""",1TB,2024,M4 Max,,,,,,,,5255
+Mac,MacBook Pro,,,"16""",2TB,2024,M4 Max,,,,,,,,5970
+Mac,MacBook Pro,,,"16""",4TB,2024,M4 Max,,,,,,,,7310
+Mac,MacBook Pro,,,"16""",8TB,2024,M4 Max,,,,,,,,7720
+Mac,MacBook Pro,,,"14""",1TB,2024,M4 Max,,,,,,,,5865
+Mac,MacBook Pro,,,"14""",2TB,2024,M4 Max,,,,,,,,6320
+Mac,MacBook Pro,,,"14""",4TB,2024,M4 Max,,,,,,,,7570
+Mac,MacBook Pro,,,"14""",8TB,2024,M4 Max,,,,,,,,8515
+Mac,MacBook Pro,,,"16""",1TB,2024,M4 Max,,,,,,,,6355
+Mac,MacBook Pro,,,"16""",2TB,2024,M4 Max,,,,,,,,6380
+Mac,MacBook Pro,,,"16""",4TB,2024,M4 Max,,,,,,,,7405
+Mac,MacBook Pro,,,"16""",8TB,2024,M4 Max,,,,,,,,9175
+Mac,MacBook Pro,,,"14""",512GB,2025,M5,,,,,,,,3705
+Mac,MacBook Pro,,,"14""",1TB,2025,M5,,,,,,,,3820
+Mac,MacBook Pro,,,"14""",2TB,2025,M5,,,,,,,,4830
+Mac,MacBook Pro,,,"14""",4TB,2025,M5,,,,,,,,5455
+Mac,MacBook Neo,,,"13""",256GB,2026,A18 Pro,,,,,,,,1600
+Mac,MacBook Neo,,,"13""",512GB,2026,A18 Pro,,,,,,,,1895
+iPad,iPad,7th,A2197,"10.2""",32GB,2019,A10 Fusion,,,,,WiFi,,,125
+iPad,iPad,7th,A2197,"10.2""",128GB,2019,A10 Fusion,,,,,WiFi,,,210
+iPad,iPad,7th,A2200/A2198,"10.2""",32GB,2019,A10 Fusion,,,,,WiFi+Cellular,,,150
+iPad,iPad,7th,A2200/A2198,"10.2""",128GB,2019,A10 Fusion,,,,,WiFi+Cellular,,,300
+iPad,iPad,8th,A2270,"10.2""",32GB,2020,A12 Bionic,,,,,WiFi,,,220
+iPad,iPad,8th,A2270,"10.2""",128GB,2020,A12 Bionic,,,,,WiFi,,,265
+iPad,iPad,8th,A2428/A2429/A2430,"10.2""",32GB,2020,A12 Bionic,,,,,WiFi+Cellular,,,255
+iPad,iPad,8th,A2428/A2429/A2430,"10.2""",128GB,2020,A12 Bionic,,,,,WiFi+Cellular,,,345
+iPad,iPad,9th,A2602,"10.2""",64GB,2021,A13 Bionic,,,,,WiFi,,,305
+iPad,iPad,9th,A2602,"10.2""",256GB,2021,A13 Bionic,,,,,WiFi,,,465
+iPad,iPad,9th,A2603/A2604/A2605,"10.2""",64GB,2021,A13 Bionic,,,,,WiFi+Cellular,,,480
+iPad,iPad,9th,A2603/A2604/A2605,"10.2""",256GB,2021,A13 Bionic,,,,,WiFi+Cellular,,,595
+iPad,iPad,10th,A2696,"10.9""",64GB,2022,A14 Bionic,,,,,WiFi,,,600
+iPad,iPad,10th,A2696,"10.9""",256GB,2022,A14 Bionic,,,,,WiFi,,,760
+iPad,iPad,10th,A2757/A2777,"10.9""",64GB,2022,A14 Bionic,,,,,WiFi+Cellular,,,740
+iPad,iPad,10th,A2757/A2777,"10.9""",256GB,2022,A14 Bionic,,,,,WiFi+Cellular,,,930
+iPad,iPad,11th,A3354,"11""",128GB,2025,A16,,,,,WiFi,,,600
+iPad,iPad,11th,A3354,"11""",256GB,2025,A16,,,,,WiFi,,,790
+iPad,iPad,11th,A3354,"11""",512GB,2025,A16,,,,,WiFi,,,1010
+iPad,iPad,11th,A3355/A3356,"11""",128GB,2025,A16,,,,,WiFi+Cellular,,,735
+iPad,iPad,11th,A3355/A3356,"11""",256GB,2025,A16,,,,,WiFi+Cellular,,,935
+iPad,iPad,11th,A3355/A3356,"11""",512GB,2025,A16,,,,,WiFi+Cellular,,,1265
+iPad,iPad Air,3rd,A2152,"10.5""",64GB,2019,A12 Bionic,,,,,WiFi,,,245
+iPad,iPad Air,3rd,A2152,"10.5""",256GB,2019,A12 Bionic,,,,,WiFi,,,380
+iPad,iPad Air,3rd,A2123/A2153/A2154,"10.5""",64GB,2019,A12 Bionic,,,,,WiFi+Cellular,,,335
+iPad,iPad Air,3rd,A2123/A2153/A2154,"10.5""",256GB,2019,A12 Bionic,,,,,WiFi+Cellular,,,485
+iPad,iPad Air,4th,A2316,"10.9""",64GB,2020,A14 Bionic,,,,,WiFi,,,505
+iPad,iPad Air,4th,A2316,"10.9""",256GB,2020,A14 Bionic,,,,,WiFi,,,675
+iPad,iPad Air,4th,A2324/A2325/A2072,"10.9""",64GB,2020,A14 Bionic,,,,,WiFi+Cellular,,,675
+iPad,iPad Air,4th,A2324/A2325/A2072,"10.9""",256GB,2020,A14 Bionic,,,,,WiFi+Cellular,,,745
+iPad,iPad Air,5th,A2588,"10.9""",64GB,2022,M1,,,,,WiFi,,,720
+iPad,iPad Air,5th,A2588,"10.9""",256GB,2022,M1,,,,,WiFi,,,830
+iPad,iPad Air,5th,A2589/A2591,"10.9""",64GB,2022,M1,,,,,WiFi+Cellular,,,855
+iPad,iPad Air,5th,A2589/A2591,"10.9""",256GB,2022,M1,,,,,WiFi+Cellular,,,940
+iPad,iPad Air,6th,A2902,"11""",128GB,2024,M2,,,,,WiFi,,,1050
+iPad,iPad Air,6th,A2902,"11""",256GB,2024,M2,,,,,WiFi,,,1195
+iPad,iPad Air,6th,A2902,"11""",512GB,2024,M2,,,,,WiFi,,,1330
+iPad,iPad Air,6th,A2902,"11""",1TB,2024,M2,,,,,WiFi,,,1645
+iPad,iPad Air,6th,A2903/A2904,"11""",128GB,2024,M2,,,,,WiFi+Cellular,,,1275
+iPad,iPad Air,6th,A2903/A2904,"11""",256GB,2024,M2,,,,,WiFi+Cellular,,,1440
+iPad,iPad Air,6th,A2903/A2904,"11""",512GB,2024,M2,,,,,WiFi+Cellular,,,1565
+iPad,iPad Air,6th,A2903/A2904,"11""",1TB,2024,M2,,,,,WiFi+Cellular,,,1735
+iPad,iPad Air,6th,A2898,"13""",128GB,2024,M2,,,,,WiFi,,,1145
+iPad,iPad Air,6th,A2898,"13""",256GB,2024,M2,,,,,WiFi,,,1260
+iPad,iPad Air,6th,A2898,"13""",512GB,2024,M2,,,,,WiFi,,,1540
+iPad,iPad Air,6th,A2898,"13""",1TB,2024,M2,,,,,WiFi,,,1765
+iPad,iPad Air,6th,A2899/A2900,"13""",128GB,2024,M2,,,,,WiFi+Cellular,,,1440
+iPad,iPad Air,6th,A2899/A2900,"13""",256GB,2024,M2,,,,,WiFi+Cellular,,,1535
+iPad,iPad Air,6th,A2899/A2900,"13""",512GB,2024,M2,,,,,WiFi+Cellular,,,1830
+iPad,iPad Air,6th,A2899/A2900,"13""",1TB,2024,M2,,,,,WiFi+Cellular,,,1935
+iPad,iPad Air,7th,A3266,"11""",128GB,2025,M3,,,,,WiFi,,,1185
+iPad,iPad Air,7th,A3266,"11""",256GB,2025,M3,,,,,WiFi,,,1340
+iPad,iPad Air,7th,A3266,"11""",512GB,2025,M3,,,,,WiFi,,,1705
+iPad,iPad Air,7th,A3266,"11""",1TB,2025,M3,,,,,WiFi,,,1980
+iPad,iPad Air,7th,A3267/A3270,"11""",128GB,2025,M3,,,,,WiFi+Cellular,,,1515
+iPad,iPad Air,7th,A3267/A3270,"11""",256GB,2025,M3,,,,,WiFi+Cellular,,,1685
+iPad,iPad Air,7th,A3267/A3270,"11""",512GB,2025,M3,,,,,WiFi+Cellular,,,1860
+iPad,iPad Air,7th,A3267/A3270,"11""",1TB,2025,M3,,,,,WiFi+Cellular,,,2160
+iPad,iPad Air,7th,A3268,"13""",128GB,2025,M3,,,,,WiFi,,,1390
+iPad,iPad Air,7th,A3268,"13""",256GB,2025,M3,,,,,WiFi,,,1625
+iPad,iPad Air,7th,A3268,"13""",512GB,2025,M3,,,,,WiFi,,,1970
+iPad,iPad Air,7th,A3268,"13""",1TB,2025,M3,,,,,WiFi,,,2100
+iPad,iPad Air,7th,A3269/A3271,"13""",128GB,2025,M3,,,,,WiFi+Cellular,,,1640
+iPad,iPad Air,7th,A3269/A3271,"13""",256GB,2025,M3,,,,,WiFi+Cellular,,,2020
+iPad,iPad Air,7th,A3269/A3271,"13""",512GB,2025,M3,,,,,WiFi+Cellular,,,2065
+iPad,iPad Air,7th,A3269/A3271,"13""",1TB,2025,M3,,,,,WiFi+Cellular,,,2385
+iPad,iPad Air,,A3459,"11""",128GB,2026,M4,,,,,WiFi,,,1960
+iPad,iPad Air,,A3459,"11""",256GB,2026,M4,,,,,WiFi,,,2275
+iPad,iPad Air,,A3459,"11""",512GB,2026,M4,,,,,WiFi,,,2415
+iPad,iPad Air,,A3459,"11""",1TB,2026,M4,,,,,WiFi,,,3245
+iPad,iPad Air,,A3460/A3463,"11""",128GB,2026,M4,,,,,WiFi+Cellular,,,2170
+iPad,iPad Air,,A3460/A3463,"11""",256GB,2026,M4,,,,,WiFi+Cellular,,,2370
+iPad,iPad Air,,A3460/A3463,"11""",512GB,2026,M4,,,,,WiFi+Cellular,,,2800
+iPad,iPad Air,,A3460/A3463,"11""",1TB,2026,M4,,,,,WiFi+Cellular,,,3560
+iPad,iPad Air,,A3461,"13""",128GB,2026,M4,,,,,WiFi,,,2355
+iPad,iPad Air,,A3461,"13""",256GB,2026,M4,,,,,WiFi,,,2720
+iPad,iPad Air,,A3461,"13""",512GB,2026,M4,,,,,WiFi,,,3145
+iPad,iPad Air,,A3461,"13""",1TB,2026,M4,,,,,WiFi,,,3960
+iPad,iPad Air,,A3462/A3464,"13""",128GB,2026,M4,,,,,WiFi+Cellular,,,2900
+iPad,iPad Air,,A3462/A3464,"13""",256GB,2026,M4,,,,,WiFi+Cellular,,,2815
+iPad,iPad Air,,A3462/A3464,"13""",512GB,2026,M4,,,,,WiFi+Cellular,,,3620
+iPad,iPad Air,,A3462/A3464,"13""",1TB,2026,M4,,,,,WiFi+Cellular,,,4100
+iPad,iPad Mini,5th,A2133,"7.9""",64GB,2019,A12 Bionic,,,,,WiFi,,,280
+iPad,iPad Mini,5th,A2133,"7.9""",256GB,2019,A12 Bionic,,,,,WiFi,,,320
+iPad,iPad Mini,5th,A2124/A2126/A2125,"7.9""",64GB,2019,A12 Bionic,,,,,WiFi+Cellular,,,325
+iPad,iPad Mini,5th,A2124/A2126/A2125,"7.9""",256GB,2019,A12 Bionic,,,,,WiFi+Cellular,,,365
+iPad,iPad Mini,6th,A2567,"8.3""",64GB,2021,A15 Bionic,,,,,WiFi,,,565
+iPad,iPad Mini,6th,A2567,"8.3""",256GB,2021,A15 Bionic,,,,,WiFi,,,735
+iPad,iPad Mini,6th,A2568/A2569,"8.3""",64GB,2021,A15 Bionic,,,,,WiFi+Cellular,,,665
+iPad,iPad Mini,6th,A2568/A2569,"8.3""",256GB,2021,A15 Bionic,,,,,WiFi+Cellular,,,835
+iPad,iPad Mini,7th,A2993,"8.3""",128GB,2024,A17 Pro,,,,,WiFi,,,775
+iPad,iPad Mini,7th,A2993,"8.3""",256GB,2024,A17 Pro,,,,,WiFi,,,950
+iPad,iPad Mini,7th,A2993,"8.3""",512GB,2024,A17 Pro,,,,,WiFi,,,1195
+iPad,iPad Mini,7th,A2995/A2996,"8.3""",128GB,2024,A17 Pro,,,,,WiFi+Cellular,,,970
+iPad,iPad Mini,7th,A2995/A2996,"8.3""",256GB,2024,A17 Pro,,,,,WiFi+Cellular,,,1195
+iPad,iPad Mini,7th,A2995/A2996,"8.3""",512GB,2024,A17 Pro,,,,,WiFi+Cellular,,,1385
+iPad,iPad Pro,,A1701,"10.5""",64GB,2017,A10X Fusion,,,,,WiFi,,,135
+iPad,iPad Pro,,A1701,"10.5""",256GB,2017,A10X Fusion,,,,,WiFi,,,225
+iPad,iPad Pro,,A1701,"10.5""",512GB,2017,A10X Fusion,,,,,WiFi,,,280
+iPad,iPad Pro,,A1709/A1852,"10.5""",64GB,2017,A10X Fusion,,,,,WiFi+Cellular,,,185
+iPad,iPad Pro,,A1709/A1852,"10.5""",256GB,2017,A10X Fusion,,,,,WiFi+Cellular,,,260
+iPad,iPad Pro,,A1709/A1852,"10.5""",512GB,2017,A10X Fusion,,,,,WiFi+Cellular,,,325
+iPad,iPad Pro,2nd,A1670,"12.9""",64GB,2017,A10X Fusion,,,,,WiFi,,,350
+iPad,iPad Pro,2nd,A1670,"12.9""",256GB,2017,A10X Fusion,,,,,WiFi,,,405
+iPad,iPad Pro,2nd,A1670,"12.9""",512GB,2017,A10X Fusion,,,,,WiFi,,,510
+iPad,iPad Pro,2nd,A1671/A1821,"12.9""",64GB,2017,A10X Fusion,,,,,WiFi+Cellular,,,385
+iPad,iPad Pro,2nd,A1671/A1821,"12.9""",256GB,2017,A10X Fusion,,,,,WiFi+Cellular,,,450
+iPad,iPad Pro,2nd,A1671/A1821,"12.9""",512GB,2017,A10X Fusion,,,,,WiFi+Cellular,,,520
+iPad,iPad Pro,1st,A1980,"11""",64GB,2018,A12X Bionic,,,,,WiFi,,,505
+iPad,iPad Pro,1st,A1980,"11""",256GB,2018,A12X Bionic,,,,,WiFi,,,670
+iPad,iPad Pro,1st,A1980,"11""",512GB,2018,A12X Bionic,,,,,WiFi,,,815
+iPad,iPad Pro,1st,A1980,"11""",1TB,2018,A12X Bionic,,,,,WiFi,,,805
+iPad,iPad Pro,1st,A1934/A2013/A1979,"11""",64GB,2018,A12X Bionic,,,,,WiFi+Cellular,,,625
+iPad,iPad Pro,1st,A1934/A2013/A1979,"11""",256GB,2018,A12X Bionic,,,,,WiFi+Cellular,,,800
+iPad,iPad Pro,1st,A1934/A2013/A1979,"11""",512GB,2018,A12X Bionic,,,,,WiFi+Cellular,,,920
+iPad,iPad Pro,1st,A1934/A2013/A1979,"11""",1TB,2018,A12X Bionic,,,,,WiFi+Cellular,,,1005
+iPad,iPad Pro,3rd,A1876,"12.9""",64GB,2018,A12X Bionic,,,,,WiFi,,,630
+iPad,iPad Pro,3rd,A1876,"12.9""",256GB,2018,A12X Bionic,,,,,WiFi,,,670
+iPad,iPad Pro,3rd,A1876,"12.9""",512GB,2018,A12X Bionic,,,,,WiFi,,,780
+iPad,iPad Pro,3rd,A1876,"12.9""",1TB,2018,A12X Bionic,,,,,WiFi,,,885
+iPad,iPad Pro,3rd,A1895/A2014/A1983,"12.9""",64GB,2018,A12X Bionic,,,,,WiFi+Cellular,,,710
+iPad,iPad Pro,3rd,A1895/A2014/A1983,"12.9""",256GB,2018,A12X Bionic,,,,,WiFi+Cellular,,,785
+iPad,iPad Pro,3rd,A1895/A2014/A1983,"12.9""",512GB,2018,A12X Bionic,,,,,WiFi+Cellular,,,885
+iPad,iPad Pro,3rd,A1895/A2014/A1983,"12.9""",1TB,2018,A12X Bionic,,,,,WiFi+Cellular,,,915
+iPad,iPad Pro,2nd,A2228,"11""",128GB,2020,A12Z Bionic,,,,,WiFi,,,600
+iPad,iPad Pro,2nd,A2228,"11""",256GB,2020,A12Z Bionic,,,,,WiFi,,,650
+iPad,iPad Pro,2nd,A2228,"11""",512GB,2020,A12Z Bionic,,,,,WiFi,,,825
+iPad,iPad Pro,2nd,A2228,"11""",1TB,2020,A12Z Bionic,,,,,WiFi,,,835
+iPad,iPad Pro,2nd,A2068/A2230/A2231,"11""",128GB,2020,A12Z Bionic,,,,,WiFi+Cellular,,,715
+iPad,iPad Pro,2nd,A2068/A2230/A2231,"11""",256GB,2020,A12Z Bionic,,,,,WiFi+Cellular,,,745
+iPad,iPad Pro,2nd,A2068/A2230/A2231,"11""",512GB,2020,A12Z Bionic,,,,,WiFi+Cellular,,,880
+iPad,iPad Pro,2nd,A2068/A2230/A2231,"11""",1TB,2020,A12Z Bionic,,,,,WiFi+Cellular,,,1005
+iPad,iPad Pro,4th,A2229,"12.9""",128GB,2020,A12Z Bionic,,,,,WiFi,,,770
+iPad,iPad Pro,4th,A2229,"12.9""",256GB,2020,A12Z Bionic,,,,,WiFi,,,895
+iPad,iPad Pro,4th,A2229,"12.9""",512GB,2020,A12Z Bionic,,,,,WiFi,,,1080
+iPad,iPad Pro,4th,A2229,"12.9""",1TB,2020,A12Z Bionic,,,,,WiFi,,,1065
+iPad,iPad Pro,4th,A2069/A2232/A2233,"12.9""",128GB,2020,A12Z Bionic,,,,,WiFi+Cellular,,,860
+iPad,iPad Pro,4th,A2069/A2232/A2233,"12.9""",256GB,2020,A12Z Bionic,,,,,WiFi+Cellular,,,980
+iPad,iPad Pro,4th,A2069/A2232/A2233,"12.9""",512GB,2020,A12Z Bionic,,,,,WiFi+Cellular,,,1150
+iPad,iPad Pro,4th,A2069/A2232/A2233,"12.9""",1TB,2020,A12Z Bionic,,,,,WiFi+Cellular,,,1170
+iPad,iPad Pro,3rd,A2377,"11""",128GB,2021,M1,,,,,WiFi,,,840
+iPad,iPad Pro,3rd,A2377,"11""",256GB,2021,M1,,,,,WiFi,,,1015
+iPad,iPad Pro,3rd,A2377,"11""",512GB,2021,M1,,,,,WiFi,,,1175
+iPad,iPad Pro,3rd,A2377,"11""",1TB,2021,M1,,,,,WiFi,,,1155
+iPad,iPad Pro,3rd,A2377,"11""",2TB,2021,M1,,,,,WiFi,,,1285
+iPad,iPad Pro,3rd,A2301/A2459/A2460,"11""",128GB,2021,M1,,,,,WiFi+Cellular,,,875
+iPad,iPad Pro,3rd,A2301/A2459/A2460,"11""",256GB,2021,M1,,,,,WiFi+Cellular,,,1070
+iPad,iPad Pro,3rd,A2301/A2459/A2460,"11""",512GB,2021,M1,,,,,WiFi+Cellular,,,1215
+iPad,iPad Pro,3rd,A2301/A2459/A2460,"11""",1TB,2021,M1,,,,,WiFi+Cellular,,,1430
+iPad,iPad Pro,3rd,A2301/A2459/A2460,"11""",2TB,2021,M1,,,,,WiFi+Cellular,,,1500
+iPad,iPad Pro,5th,A2378,"12.9""",128GB,2021,M1,,,,,WiFi,,,1085
+iPad,iPad Pro,5th,A2378,"12.9""",256GB,2021,M1,,,,,WiFi,,,1135
+iPad,iPad Pro,5th,A2378,"12.9""",512GB,2021,M1,,,,,WiFi,,,1225
+iPad,iPad Pro,5th,A2378,"12.9""",1TB,2021,M1,,,,,WiFi,,,1280
+iPad,iPad Pro,5th,A2378,"12.9""",2TB,2021,M1,,,,,WiFi,,,1495
+iPad,iPad Pro,5th,A2379/A2461/A2462,"12.9""",128GB,2021,M1,,,,,WiFi+Cellular,,,1120
+iPad,iPad Pro,5th,A2379/A2461/A2462,"12.9""",256GB,2021,M1,,,,,WiFi+Cellular,,,1165
+iPad,iPad Pro,5th,A2379/A2461/A2462,"12.9""",512GB,2021,M1,,,,,WiFi+Cellular,,,1380
+iPad,iPad Pro,5th,A2379/A2461/A2462,"12.9""",1TB,2021,M1,,,,,WiFi+Cellular,,,1505
+iPad,iPad Pro,5th,A2379/A2461/A2462,"12.9""",2TB,2021,M1,,,,,WiFi+Cellular,,,1525
+iPad,iPad Pro,4th,A2759,"11""",128GB,2022,M2,,,,,WiFi,,,1045
+iPad,iPad Pro,4th,A2759,"11""",256GB,2022,M2,,,,,WiFi,,,1155
+iPad,iPad Pro,4th,A2759,"11""",512GB,2022,M2,,,,,WiFi,,,1370
+iPad,iPad Pro,4th,A2759,"11""",1TB,2022,M2,,,,,WiFi,,,1545
+iPad,iPad Pro,4th,A2759,"11""",2TB,2022,M2,,,,,WiFi,,,1625
+iPad,iPad Pro,4th,A2435/A2761/A2762,"11""",128GB,2022,M2,,,,,WiFi+Cellular,,,1180
+iPad,iPad Pro,4th,A2435/A2761/A2762,"11""",256GB,2022,M2,,,,,WiFi+Cellular,,,1325
+iPad,iPad Pro,4th,A2435/A2761/A2762,"11""",512GB,2022,M2,,,,,WiFi+Cellular,,,1450
+iPad,iPad Pro,4th,A2435/A2761/A2762,"11""",1TB,2022,M2,,,,,WiFi+Cellular,,,1675
+iPad,iPad Pro,4th,A2435/A2761/A2762,"11""",2TB,2022,M2,,,,,WiFi+Cellular,,,1725
+iPad,iPad Pro,6th,A2436,"12.9""",128GB,2022,M2,,,,,WiFi,,,1180
+iPad,iPad Pro,6th,A2436,"12.9""",256GB,2022,M2,,,,,WiFi,,,1330
+iPad,iPad Pro,6th,A2436,"12.9""",512GB,2022,M2,,,,,WiFi,,,1445
+iPad,iPad Pro,6th,A2436,"12.9""",1TB,2022,M2,,,,,WiFi,,,1730
+iPad,iPad Pro,6th,A2436,"12.9""",2TB,2022,M2,,,,,WiFi,,,1825
+iPad,iPad Pro,6th,A2437/A2764/A2766,"12.9""",128GB,2022,M2,,,,,WiFi+Cellular,,,1300
+iPad,iPad Pro,6th,A2437/A2764/A2766,"12.9""",256GB,2022,M2,,,,,WiFi+Cellular,,,1405
+iPad,iPad Pro,6th,A2437/A2764/A2766,"12.9""",512GB,2022,M2,,,,,WiFi+Cellular,,,1650
+iPad,iPad Pro,6th,A2437/A2764/A2766,"12.9""",1TB,2022,M2,,,,,WiFi+Cellular,,,1675
+iPad,iPad Pro,6th,A2437/A2764/A2766,"12.9""",2TB,2022,M2,,,,,WiFi+Cellular,,,1890
+iPad,iPad Pro,5th,A2836,"11""",256GB,2024,M4,,,,,WiFi,,,1580
+iPad,iPad Pro,5th,A2836,"11""",512GB,2024,M4,,,,,WiFi,,,1950
+iPad,iPad Pro,5th,A2836,"11""",1TB,2024,M4,,,,,WiFi,,,2520
+iPad,iPad Pro,5th,A2836,"11""",2TB,2024,M4,,,,,WiFi,,,3100
+iPad,iPad Pro,5th,A2837/A3006,"11""",256GB,2024,M4,,,,,WiFi+Cellular,,,1895
+iPad,iPad Pro,5th,A2837/A3006,"11""",512GB,2024,M4,,,,,WiFi+Cellular,,,2230
+iPad,iPad Pro,5th,A2837/A3006,"11""",1TB,2024,M4,,,,,WiFi+Cellular,,,2685
+iPad,iPad Pro,5th,A2837/A3006,"11""",2TB,2024,M4,,,,,WiFi+Cellular,,,3055
+iPad,iPad Pro,6th,A2925,"13""",256GB,2024,M4,,,,,WiFi,,,1985
+iPad,iPad Pro,6th,A2925,"13""",512GB,2024,M4,,,,,WiFi,,,2390
+iPad,iPad Pro,6th,A2925,"13""",1TB,2024,M4,,,,,WiFi,,,3100
+iPad,iPad Pro,6th,A2925,"13""",2TB,2024,M4,,,,,WiFi,,,3505
+iPad,iPad Pro,6th,A2926/A3007,"13""",256GB,2024,M4,,,,,WiFi+Cellular,,,2410
+iPad,iPad Pro,6th,A2926/A3007,"13""",512GB,2024,M4,,,,,WiFi+Cellular,,,2800
+iPad,iPad Pro,6th,A2926/A3007,"13""",1TB,2024,M4,,,,,WiFi+Cellular,,,3360
+iPad,iPad Pro,6th,A2926/A3007,"13""",2TB,2024,M4,,,,,WiFi+Cellular,,,3930
+iPad,iPad Pro,6th,A3357,"11""",256GB,2025,M5,,,,,WiFi,,,2305
+iPad,iPad Pro,6th,A3357,"11""",512GB,2025,M5,,,,,WiFi,,,2710
+iPad,iPad Pro,6th,A3357,"11""",1TB,2025,M5,,,,,WiFi,,,3615
+iPad,iPad Pro,6th,A3357,"11""",2TB,2025,M5,,,,,WiFi,,,4385
+iPad,iPad Pro,6th,A3358/A3359,"11""",256GB,2025,M5,,,,,WiFi+Cellular,,,2820
+iPad,iPad Pro,6th,A3358/A3359,"11""",512GB,2025,M5,,,,,WiFi+Cellular,,,3410
+iPad,iPad Pro,6th,A3358/A3359,"11""",1TB,2025,M5,,,,,WiFi+Cellular,,,3825
+iPad,iPad Pro,6th,A3358/A3359,"11""",2TB,2025,M5,,,,,WiFi+Cellular,,,5165
+iPad,iPad Pro,7th,A3360,"13""",256GB,2025,M5,,,,,WiFi,,,3025
+iPad,iPad Pro,7th,A3360,"13""",512GB,2025,M5,,,,,WiFi,,,3440
+iPad,iPad Pro,7th,A3360,"13""",1TB,2025,M5,,,,,WiFi,,,4475
+iPad,iPad Pro,7th,A3360,"13""",2TB,2025,M5,,,,,WiFi,,,5015
+iPad,iPad Pro,7th,A3361/A3362,"13""",256GB,2025,M5,,,,,WiFi+Cellular,,,3220
+iPad,iPad Pro,7th,A3361/A3362,"13""",512GB,2025,M5,,,,,WiFi+Cellular,,,3780
+iPad,iPad Pro,7th,A3361/A3362,"13""",1TB,2025,M5,,,,,WiFi+Cellular,,,4730
+iPad,iPad Pro,7th,A3361/A3362,"13""",2TB,2025,M5,,,,,WiFi+Cellular,,,5420
+iPhone,IPHONE 18 PRO MAX,,A3473/A3716/A3718/A3717,,256GB,2026,,,-260,-2090,,,,,3650
+iPhone,IPHONE 18 PRO MAX,,A3473/A3716/A3718/A3717,,512GB,2026,,,-260,-2100,,,,,4280
+iPhone,IPHONE 18 PRO MAX,,A3473/A3716/A3718/A3717,,1TB,2026,,,-270,-2130,,,,,5580
+iPhone,IPHONE 18 PRO MAX,,A3473/A3716/A3718/A3717,,2TB,2026,,,-260,-2090,,,,,7310
+iPhone,IPHONE 18 PRO,,A3472/A3713/A3715/A3714,,256GB,2026,,,-280,-2250,,,,,3615
+iPhone,IPHONE 18 PRO,,A3472/A3713/A3715/A3714,,512GB,2026,,,-280,-2220,,,,,4210
+iPhone,IPHONE 18 PRO,,A3472/A3713/A3715/A3714,,1TB,2026,,,-270,-2180,,,,,5415
+iPhone,IPHONE 18 PRO,,A3472/A3713/A3715/A3714,,2TB,2026,,,-280,-2260,,,,,7595
+iPhone,IPHONE 17 PRO MAX,,A3257/A3525/A3527/A3526,,256GB,2025,,,-290,-2330,,,,,3490
+iPhone,IPHONE 17 PRO MAX,,A3257/A3525/A3527/A3526,,512GB,2025,,,-280,-2270,,,,,3885
+iPhone,IPHONE 17 PRO MAX,,A3257/A3525/A3527/A3526,,1TB,2025,,,-270,-2190,,,,,4280
+iPhone,IPHONE 17 PRO MAX,,A3257/A3525/A3527/A3526,,2TB,2025,,,-270,-2170,,,,,5255
+iPhone,IPHONE 17 PRO,,A3256/A3522/A3524/A3523,,256GB,2025,,,-270,-2150,,,,,2960
+iPhone,IPHONE 17 PRO,,A3256/A3522/A3524/A3523,,512GB,2025,,,-290,-2310,,,,,3655
+iPhone,IPHONE 17 PRO,,A3256/A3522/A3524/A3523,,1TB,2025,,,-290,-2290,,,,,4100
+iPhone,IPHONE 17,,A3258/A3519/A3521/A3520,,256GB,2025,,,-260,-1900,,,,,2070
+iPhone,IPHONE 17,,A3258/A3519/A3521/A3520,,512GB,2025,,,-290,-2130,,,,,2665
+iPhone,IPHONE 17e,,A3575/A3635/A3634,,256GB,2026,,,-270,-1980,,,,,1485
+iPhone,IPHONE 17e,,A3575/A3635/A3634,,512GB,2026,,,-260,-1900,,,,,1860
+iPhone,IPHONE AIR,,A3260/A3516/A3518/A3517,,256GB,2025,,,-280,-2030,,,,,2165
+iPhone,IPHONE AIR,,A3260/A3516/A3518/A3517,,512GB,2025,,,-270,-1950,,,,,2510
+iPhone,IPHONE AIR,,A3260/A3516/A3518/A3517,,1TB,2025,,,-270,-1950,,,,,2970
+iPhone,IPHONE 16 PRO MAX,,A3084/A3295/A3297/A3296,,256GB,2024,,,-260,-1890,,,,,2495
+iPhone,IPHONE 16 PRO MAX,,A3084/A3295/A3297/A3296,,512GB,2024,,,-290,-2090,,,,,3080
+iPhone,IPHONE 16 PRO MAX,,A3084/A3295/A3297/A3296,,1TB,2024,,,-260,-1920,,,,,3140
+iPhone,IPHONE 16 PRO,,A3083/A3292/A3294/A3293,,128GB,2024,,,-270,-1600,,,,,2145
+iPhone,IPHONE 16 PRO,,A3083/A3292/A3294/A3293,,256GB,2024,,,-290,-1710,,,,,2500
+iPhone,IPHONE 16 PRO,,A3083/A3292/A3294/A3293,,512GB,2024,,,-260,-1570,,,,,2495
+iPhone,IPHONE 16 PRO,,A3083/A3292/A3294/A3293,,1TB,2024,,,-260,-1560,,,,,2805
+iPhone,IPHONE 16 PLUS,,A3082/A3289/A3291/A3290,,128GB,2024,,,-290,-1240,,,,,2060
+iPhone,IPHONE 16 PLUS,,A3082/A3289/A3291/A3290,,256GB,2024,,,-270,-1140,,,,,2045
+iPhone,IPHONE 16 PLUS,,A3082/A3289/A3291/A3290,,512GB,2024,,,-260,-1120,,,,,2230
+iPhone,IPHONE 16,,A3081/A3286/A3288/A3287,,128GB,2024,,,-280,-1180,,,,,1775
+iPhone,IPHONE 16,,A3081/A3286/A3288/A3287,,256GB,2024,,,-290,-1200,,,,,1995
+iPhone,IPHONE 16,,A3081/A3286/A3288/A3287,,512GB,2024,,,-260,-1090,,,,,2015
+iPhone,IPHONE 16e,,A3212/A3408/A3410/A3409,,128GB,2025,,,-270,-1110,,,,,985
+iPhone,IPHONE 16e,,A3212/A3408/A3410/A3409,,256GB,2025,,,-280,-1180,,,,,1160
+iPhone,IPHONE 16e,,A3212/A3408/A3410/A3409,,512GB,2025,,,-280,-1190,,,,,1470
+iPhone,IPHONE 15 PRO MAX,,A2849/A3105/A3108/A3106,,256GB,2023,,,-270,-1540,,,,,2115
+iPhone,IPHONE 15 PRO MAX,,A2849/A3105/A3108/A3106,,512GB,2023,,,-270,-1500,,,,,2260
+iPhone,IPHONE 15 PRO MAX,,A2849/A3105/A3108/A3106,,1TB,2023,,,-280,-1570,,,,,2550
+iPhone,IPHONE 15 PRO,,A2848/A3101/A3104/A3102,,128GB,2023,,,-270,-1410,,,,,1665
+iPhone,IPHONE 15 PRO,,A2848/A3101/A3104/A3102,,256GB,2023,,,-260,-1400,,,,,1875
+iPhone,IPHONE 15 PRO,,A2848/A3101/A3104/A3102,,512GB,2023,,,-280,-1480,,,,,2090
+iPhone,IPHONE 15 PRO,,A2848/A3101/A3104/A3102,,1TB,2023,,,-280,-1470,,,,,2280
+iPhone,IPHONE 15 PLUS,,A2847/A3093/A3096/A3094,,128GB,2023,,,-260,-940,,,,,1340
+iPhone,IPHONE 15 PLUS,,A2847/A3093/A3096/A3094,,256GB,2023,,,-270,-960,,,,,1535
+iPhone,IPHONE 15 PLUS,,A2847/A3093/A3096/A3094,,512GB,2023,,,-260,-930,,,,,1600
+iPhone,IPHONE 15,,A2846/A3089/A3092/A3090,,128GB,2023,,,-270,-1030,,,,,1240
+iPhone,IPHONE 15,,A2846/A3089/A3092/A3090,,256GB,2023,,,-260,-1010,,,,,1340
+iPhone,IPHONE 15,,A2846/A3089/A3092/A3090,,512GB,2023,,,-280,-1080,,,,,1575
+iPhone,IPHONE 14 PRO MAX,,A2651/A2893/A2896/A2895/A2894,,128GB,2022,,,-190,-1340,,,,,1535
+iPhone,IPHONE 14 PRO MAX,,A2651/A2893/A2896/A2895/A2894,,256GB,2022,,,-170,-1210,,,,,1505
+iPhone,IPHONE 14 PRO MAX,,A2651/A2893/A2896/A2895/A2894,,512GB,2022,,,-190,-1300,,,,,1715
+iPhone,IPHONE 14 PRO MAX,,A2651/A2893/A2896/A2895/A2894,,1TB,2022,,,-180,-1230,,,,,1740
+iPhone,IPHONE 14 PRO,,A2650/A2889/A2892/A2891/A2890,,128GB,2022,,,-190,-1150,,,,,1260
+iPhone,IPHONE 14 PRO,,A2650/A2889/A2892/A2891/A2890,,256GB,2022,,,-180,-1150,,,,,1450
+iPhone,IPHONE 14 PRO,,A2650/A2889/A2892/A2891/A2890,,512GB,2022,,,-180,-1140,,,,,1495
+iPhone,IPHONE 14 PRO,,A2650/A2889/A2892/A2891/A2890,,1TB,2022,,,-180,-1090,,,,,1490
+iPhone,IPHONE 14 PLUS,,A2632/A2885/A2888/A2887/A2886,,128GB,2022,,,-180,-790,,,,,905
+iPhone,IPHONE 14 PLUS,,A2632/A2885/A2888/A2887/A2886,,256GB,2022,,,-190,-840,,,,,1065
+iPhone,IPHONE 14 PLUS,,A2632/A2885/A2888/A2887/A2886,,512GB,2022,,,-190,-810,,,,,1205
+iPhone,IPHONE 14,,A2649/A2881/A2884/A2883/A2882,,128GB,2022,,,-190,-540,,,,,855
+iPhone,IPHONE 14,,A2649/A2881/A2884/A2883/A2882,,256GB,2022,,,-180,-520,,,,,885
+iPhone,IPHONE 14,,A2649/A2881/A2884/A2883/A2882,,512GB,2022,,,-190,-550,,,,,1100
+iPhone,IPHONE 13 PRO MAX,,A2484/A2641/A2644/A2645/A2643,,128GB,2021,,,-180,-810,,,,,1010
+iPhone,IPHONE 13 PRO MAX,,A2484/A2641/A2644/A2645/A2643,,256GB,2021,,,-170,-780,,,,,1120
+iPhone,IPHONE 13 PRO MAX,,A2484/A2641/A2644/A2645/A2643,,512GB,2021,,,-190,-870,,,,,1295
+iPhone,IPHONE 13 PRO MAX,,A2484/A2641/A2644/A2645/A2643,,1TB,2021,,,-190,-860,,,,,1405
+iPhone,IPHONE 13 PRO,,A2483/A2636/A2639/A2640/A2638,,128GB,2021,,,-190,-820,,,,,965
+iPhone,IPHONE 13 PRO,,A2483/A2636/A2639/A2640/A2638,,256GB,2021,,,-190,-800,,,,,1020
+iPhone,IPHONE 13 PRO,,A2483/A2636/A2639/A2640/A2638,,512GB,2021,,,-170,-740,,,,,1015
+iPhone,IPHONE 13 PRO,,A2483/A2636/A2639/A2640/A2638,,1TB,2021,,,-170,-730,,,,,1100
+iPhone,IPHONE 13 MINI,,A2481/A2626/A2629/A2630/A2628,,128GB,2021,,,-190,-730,,,,,510
+iPhone,IPHONE 13 MINI,,A2481/A2626/A2629/A2630/A2628,,256GB,2021,,,-190,-740,,,,,565
+iPhone,IPHONE 13 MINI,,A2481/A2626/A2629/A2630/A2628,,512GB,2021,,,-190,-740,,,,,635
+iPhone,IPHONE 13,,A2482/A2631/A2634/A2635/A2633,,128GB,2021,,,-180,-500,,,,,700
+iPhone,IPHONE 13,,A2482/A2631/A2634/A2635/A2633,,256GB,2021,,,-180,-500,,,,,775
+iPhone,IPHONE 13,,A2482/A2631/A2634/A2635/A2633,,512GB,2021,,,-180,-490,,,,,815
+iPhone,IPHONE 12 PRO MAX,,A2342/A2410/A2412/A2411,,128GB,2020,,,-90,-680,,,,,670
+iPhone,IPHONE 12 PRO MAX,,A2342/A2410/A2412/A2411,,256GB,2020,,,-90,-730,,,,,815
+iPhone,IPHONE 12 PRO MAX,,A2342/A2410/A2412/A2411,,512GB,2020,,,-90,-680,,,,,825
+iPhone,IPHONE 12 PRO,,A2341/A2406/A2408/A2407,,128GB,2020,,,-90,-260,,,,,610
+iPhone,IPHONE 12 PRO,,A2341/A2406/A2408/A2407,,256GB,2020,,,-90,-260,,,,,660
+iPhone,IPHONE 12 PRO,,A2341/A2406/A2408/A2407,,512GB,2020,,,-90,-270,,,,,740
+iPhone,IPHONE 12 MINI,,A2176/A2398/A2400/A2399,,64GB,2020,,,-90,-250,,,,,285
+iPhone,IPHONE 12 MINI,,A2176/A2398/A2400/A2399,,128GB,2020,,,-100,-270,,,,,385
+iPhone,IPHONE 12 MINI,,A2176/A2398/A2400/A2399,,256GB,2020,,,-90,-250,,,,,375
+iPhone,IPHONE 12,,A2172/A2402/A2404/A2403,,64GB,2020,,,-100,-270,,,,,450
+iPhone,IPHONE 12,,A2172/A2402/A2404/A2403,,128GB,2020,,,-90,-260,,,,,490
+iPhone,IPHONE 12,,A2172/A2402/A2404/A2403,,256GB,2020,,,-90,-240,,,,,515
+iPhone,IPHONE 11 PRO MAX,,A2161/A2220/A2218,,64GB,2019,,,NOT ACCEPTED,-260,,,,,450
+iPhone,IPHONE 11 PRO MAX,,A2161/A2220/A2218,,256GB,2019,,,NOT ACCEPTED,-240,,,,,495
+iPhone,IPHONE 11 PRO MAX,,A2161/A2220/A2218,,512GB,2019,,,NOT ACCEPTED,-260,,,,,585
+iPhone,IPHONE 11 PRO,,A2160/A2217/A2215,,64GB,2019,,,NOT ACCEPTED,-200,,,,,400
+iPhone,IPHONE 11 PRO,,A2160/A2217/A2215,,256GB,2019,,,NOT ACCEPTED,-200,,,,,450
+iPhone,IPHONE 11 PRO,,A2160/A2217/A2215,,512GB,2019,,,NOT ACCEPTED,-200,,,,,540
+iPhone,IPHONE 11,,A2111/A2223/A2221,,64GB,2019,,,NOT ACCEPTED,-120,,,,,330
+iPhone,IPHONE 11,,A2111/A2223/A2221,,128GB,2019,,,NOT ACCEPTED,-120,,,,,375
+iPhone,IPHONE 11,,A2111/A2223/A2221,,256GB,2019,,,NOT ACCEPTED,-120,,,,,425
+Samsung,SAMSUNG GALAXY S23,,,,128GB,2023,,,,-410,,,,,530
+Samsung,SAMSUNG GALAXY S23,,,,256GB,2023,,,,-460,,,,,595
+Samsung,SAMSUNG GALAXY S23,,,,512GB,2023,,,,-530,,,,,690
+Samsung,SAMSUNG GALAXY S23 FE,,,,128GB,2023,,,,-340,,,,,430
+Samsung,SAMSUNG GALAXY S23 FE,,,,256GB,2023,,,,-350,,,,,440
+Samsung,SAMSUNG GALAXY S23+,,,,256GB,2023,,,,-450,,,,,570
+Samsung,SAMSUNG GALAXY S23+,,,,512GB,2023,,,,-530,,,,,685
+Samsung,SAMSUNG GALAXY S23 ULTRA,,,,256GB,2023,,,,-720,,,,,945
+Samsung,SAMSUNG GALAXY S23 ULTRA,,,,512GB,2023,,,,-740,,,,,980
+Samsung,SAMSUNG GALAXY S23 ULTRA,,,,1TB,2023,,,,-920,,,,,1210
+Samsung,SAMSUNG GALAXY S24,,,,128GB,2024,,,,-480,,,,,625
+Samsung,SAMSUNG GALAXY S24,,,,256GB,2024,,,,-560,,,,,730
+Samsung,SAMSUNG GALAXY S24,,,,512GB,2024,,,,-630,,,,,850
+Samsung,SAMSUNG GALAXY S24 FE,,,,128GB,2024,,,,-460,,,,,635
+Samsung,SAMSUNG GALAXY S24 FE,,,,256GB,2024,,,,-490,,,,,675
+Samsung,SAMSUNG GALAXY S24 FE,,,,512GB,2024,,,,-550,,,,,765
+Samsung,SAMSUNG GALAXY S24+,,,,256GB,2024,,,,-670,,,,,925
+Samsung,SAMSUNG GALAXY S24+,,,,512GB,2024,,,,-670,,,,,940
+Samsung,SAMSUNG GALAXY S24 ULTRA,,,,256GB,2024,,,,-1030,,,,,1390
+Samsung,SAMSUNG GALAXY S24 ULTRA,,,,512GB,2024,,,,-1090,,,,,1475
+Samsung,SAMSUNG GALAXY S24 ULTRA,,,,1TB,2024,,,,-1220,,,,,1625
+Samsung,SAMSUNG GALAXY S25,,,,128GB,2025,,,,-760,,,,,1040
+Samsung,SAMSUNG GALAXY S25,,,,256GB,2025,,,,-800,,,,,1095
+Samsung,SAMSUNG GALAXY S25,,,,512GB,2025,,,,-910,,,,,1285
+Samsung,SAMSUNG GALAXY S25 FE,,,,128GB,2025,,,,-650,,,,,870
+Samsung,SAMSUNG GALAXY S25 FE,,,,256GB,2025,,,,-710,,,,,980
+Samsung,SAMSUNG GALAXY S25 FE,,,,512GB,2025,,,,-870,,,,,1190
+Samsung,SAMSUNG GALAXY S25+,,,,256GB,2025,,,,-1060,,,,,1460
+Samsung,SAMSUNG GALAXY S25+,,,,512GB,2025,,,,-1040,,,,,1475
+Samsung,SAMSUNG GALAXY S25 ULTRA,,,,256GB,2025,,,,-1330,,,,,1790
+Samsung,SAMSUNG GALAXY S25 ULTRA,,,,512GB,2025,,,,-1440,,,,,1975
+Samsung,SAMSUNG GALAXY S25 ULTRA,,,,1TB,2025,,,,-1760,,,,,2375
+Samsung,SAMSUNG GALAXY S26,,,,256GB,2026,,,,-1160,,,,,1655
+Samsung,SAMSUNG GALAXY S26,,,,512GB,2026,,,,-1310,,,,,1920
+Samsung,SAMSUNG GALAXY S26+,,,,256GB,2026,,,,-1520,,,,,2110
+Samsung,SAMSUNG GALAXY S26+,,,,512GB,2026,,,,-1520,,,,,2235
+Samsung,SAMSUNG GALAXY S26 ULTRA,,,,256GB,2026,,,,-1850,,,,,2475
+Samsung,SAMSUNG GALAXY S26 ULTRA,,,,512GB,2026,,,,-2020,,,,,2720
+Samsung,SAMSUNG GALAXY S26 ULTRA,,,,1TB,2026,,,,-2330,,,,,3060
+Samsung,SAMSUNG GALAXY Z FOLD 5,,,,256GB,2023,,,,-830,,,,,930
+Samsung,SAMSUNG GALAXY Z FOLD 5,,,,512GB,2023,,,,-710,,,,,945
+Samsung,SAMSUNG GALAXY Z FOLD 5,,,,1TB,2023,,,,-730,,,,,1005
+Samsung,SAMSUNG GALAXY Z FOLD 6,,,,256GB,2024,,,,-1090,,,,,1420
+Samsung,SAMSUNG GALAXY Z FOLD 6,,,,512GB,2024,,,,-1060,,,,,1440
+Samsung,SAMSUNG GALAXY Z FOLD 6,,,,1TB,2024,,,,-1130,,,,,1585
+Samsung,SAMSUNG GALAXY Z FOLD 7,,,,256GB,2025,,,,-1770,,,,,2440
+Samsung,SAMSUNG GALAXY Z FOLD 7,,,,512GB,2025,,,,-1780,,,,,2475
+Samsung,SAMSUNG GALAXY Z FOLD 7,,,,1TB,2025,,,,-2150,,,,,3000
