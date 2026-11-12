@@ -27,6 +27,11 @@ const service = useService(async () => ({
       }),
       stockRow({ Model: "Used iPhone 9 64GB", "Retail Price": "TBC" }),
       stockRow({
+        Model: "Used iPhone 11 64GB",
+        "Video Link": "https://videos.example.com/landscape.mp4",
+        "Portrait Video": "https://videos.example.com/portrait.mp4",
+      }),
+      stockRow({
         Model: "Used iPhone 10 64GB",
         "Video Link": "https://videos.example.com/same.mp4",
         "Portrait Video": "https://videos.example.com/same.mp4",
@@ -73,4 +78,17 @@ test("§2 two equal video links are one candidate, and N/A shows as no value", a
   const [device] = (await check(service(), { model: "iPhone 10" })).devices;
   expect(device?.video_link).toBe("https://videos.example.com/same.mp4");
   expect(device?.checkout_link).toBeUndefined();
+});
+
+test("§2 with two different video candidates, different calls can select different videos", async () => {
+  const videos = new Set<string | undefined>();
+  for (let call = 0; call < 40; call += 1) {
+    videos.add(
+      (await check(service(), { model: "iPhone 11" })).devices[0]?.video_link,
+    );
+  }
+  expect([...videos].toSorted()).toEqual([
+    "https://videos.example.com/landscape.mp4",
+    "https://videos.example.com/portrait.mp4",
+  ]);
 });

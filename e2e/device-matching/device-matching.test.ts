@@ -34,7 +34,7 @@ const reference = [
   variant("iPhone", "IPHONE 13 PRO"),
   variant("iPhone", "IPHONE 13 PRO MAX"),
   variant("iPhone", "IPHONE 15"),
-  variant("Samsung", "SAMSUNG GALAXY Z FOLD 7"),
+  variant("Samsung", "SAMSUNG GALAXY Z FOLD7"),
   variant("Samsung", "SAMSUNG GALAXY Z FLIP7"),
   variant("Samsung", "SAMSUNG GALAXY S25 ULTRA"),
   variant("Samsung", "SAMSUNG GALAXY A15"),
@@ -121,7 +121,7 @@ test("§1 extra descriptive words, capitalization, and punctuation do not matter
 test("§1 a minor spelling mistake matches when the numbers are the same", async () => {
   expect(await value("Iphne 15")).toEqual(["IPHONE 15 256GB"]);
   expect(await value("Galaxy Z Fold 7")).toEqual([
-    "SAMSUNG GALAXY Z FOLD 7 256GB",
+    "SAMSUNG GALAXY Z FOLD7 256GB",
   ]);
 });
 
@@ -137,7 +137,7 @@ test("§1 numbered models and sibling lines stay apart", async () => {
 
 test("§1 a description without a number matches the family but not a sibling line", async () => {
   expect(await value("Galaxy Z Fold")).toEqual([
-    "SAMSUNG GALAXY Z FOLD 7 256GB",
+    "SAMSUNG GALAXY Z FOLD7 256GB",
   ]);
   expect(await value("MacBook")).toEqual([
     "MacBook Air 512GB",
