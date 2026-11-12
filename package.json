@@ -4,10 +4,17 @@
   "private": true,
   "packageManager": "bun@1.4.4-canary.1",
   "scripts": {
+    "start": "bun src/main.ts",
     "check": "bun fmt --check && bun lint --no-error-on-unmatched-pattern && bun test --pass-with-no-tests"
   },
   "devDependencies": {
     "bun-types": "^1.4.4-canary.20261103T140956",
     "typescript": "^7"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "csv-parse": "^7.0.3",
+    "fastest-levenshtein": "^1.0.16",
+    "zod": "^4.6.7"
   }
 }
